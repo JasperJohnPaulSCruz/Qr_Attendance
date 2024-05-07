@@ -1,0 +1,213 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+.navbar {
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+    color: #fff;
+}
+
+.nav-link:hover {
+    color: #ccc;
+}
+
+.dropdown-menu {
+    background-color: #000;
+    top:82%;
+    left:35%;
+    min-width:8rem;
+}
+
+.dropdown-item {
+    color: #fff;
+}
+
+.dropdown-item:hover {
+    background-color: #adb5bd;
+}
+
+header {
+    background-color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.content-container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 90%;
+}
+
+.content-item {
+    flex: 1;
+    margin: 10px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    max-height: 525px;/* Set the maximum height here */
+    overflow-y: auto; /* Add a scrollbar when content exceeds the maximum height */
+    /* background: linear-gradient(180deg, #0c0ceb, #0a043c); */
+    border-radius: 1rem;
+}
+
+.content-item h2 {
+    font-size: 24px;
+}
+
+.camera-container {
+    text-align: center;
+
+    
+}
+
+.camera {
+    border: 5px solid #0a0303;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    position:relative;
+
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+}
+
+.search-input {
+    padding: 5px;
+    margin-right: 10px;
+}
+
+.search-button {
+    background-color: #343a40;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* sticky table header  */
+.table .thead-dark th{
+    position: sticky;
+    /* top: -19px; Stick the header to the top */
+    z-index: 1; /* Ensure the header is above the content when scrolling */
+    height: 30px;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+th {
+    background-color: #343a40;
+    color: #fff;
+}
+
+th, .table td {
+    text-align: center;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .navbar-nav {
+        flex-direction: column;
+    }
+
+    .navbar-toggler {
+        margin-bottom: 10px;
+    }
+
+    .navbar-collapse {
+        text-align: center;
+    }
+
+    header h1 {
+        font-size: 20px;
+    }
+
+    .content-item h2 {
+        font-size: 20px;
+    }
+}
+
+.fa-camera{
+    margin: 0.5rem;
+}
+
+#preview{
+    /* position:absolute; */
+    border-radius: 1rem;
+    height: 155%;
+    /* top:4rem */
+    width: 100%;
+}
+
+.scan-region-highlight-svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 65%;
+    fill: none;
+    stroke: #f0b51b;
+    stroke-width: 6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    box-shadow: 0 -1px 0 #ffffff21, 0 0 6px #ffffff21, 0 1px 1px #ffffff21;
+    border-radius: 20px;
+    padding: 2px;
+    -webkit-animation: pulsate-bck .9s ease-in-out infinite both;
+    animation: pulsate-bck .9s ease-in-out infinite both;
+    display: block;
+}
+
+.dataTables_wrapper {
+    border: 1px solid #03020f85;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.dataTables_filter {
+    text-align: left!important;
+}
+
+table.dataTable {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table.dataTable th,
+table.dataTable td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+table.dataTable th {
+    background-color: #f2f2f2;
+}
