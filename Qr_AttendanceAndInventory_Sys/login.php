@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-    <div class="flex justify-around h-screen w-screen bg-[url('assets/img/bsugate.jpg')] bg-cover bg-center font-poppins">
+    <div class="flex justify-around h-screen w-screen bg-[url('assets/img/maingate.png')] bg-cover bg-center font-poppins">
         <div class="flex justify-center items-center h-full w-full bg-green-800 bg-opacity-75">    
             <div class=" flex flex-col items-center border rounded shadow pb-10 pt-[50px] px-5 bg-white">
                 <div class="relative flex flex-col justify-center items-center">
@@ -39,7 +39,7 @@
                     <p class="opacity-0 mb-0.25 px-2 text-[11px] text-red-600 "><span class="font-medium">Oops!</span> Credential is wrong!</p>
 
                     <button type="submit" class="mt-2 w-full text-white bg-green-700 hover:bg-green-900 focus:ring-4 focus:ring-blue-300 font-medium rounded text-sm px-5 py-1 me-2 focus:outline-none">Login</button>
-                    <p class=" px-2 text-[12px] text-gray-600 ">Did you forgot your password? <a href="#" class="font-medium text-black">Reset Password</a></p>
+                    <p class=" px-2 text-[12px] text-gray-600 ">Did you forgot your password? <a href="forgotPassword.php" class="font-medium text-black">Reset Password</a></p>
 
                 </form>
 
