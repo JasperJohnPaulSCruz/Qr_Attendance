@@ -44,9 +44,12 @@
                             </button>
                         </div>
 
-                        <button type="button" 
+                        <a 
+                        type="button"
+                        href="addstudent" 
                         class="w-40 text-white bg-teal-700 hover:bg-teal-800 focus:ring-4 focus:ring-teal-300 font-medium rounded-lg text-sm px-5 py-2.5   focus:outline-none ">
-                        Add Student</button>
+                        Add Student
+                        </a>
                     </div>
                     <div class="relative overflow-x-auto shadow-md shadow-green-200 rounded-lg">
 

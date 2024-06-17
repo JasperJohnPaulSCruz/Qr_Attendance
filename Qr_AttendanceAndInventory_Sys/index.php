@@ -39,7 +39,7 @@
                                 <span class="font-medium text-green-500">Success!</span>
                                 Student QR Code Scan completed!
                             </p>
-                            <div class="mt-5 p-5 bg-teal-900 rounded-lg  flex flex-col justify-between align-center items-center shadow-md shadow-green-200 w-80">
+                            <div class="my-5 p-5 bg-teal-900 rounded-lg  flex flex-col justify-between align-center items-center shadow-md shadow-green-200 w-80">
                                 <img class="border-8 border-gray-50 rounded-full" src="https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250" width="200px" alt="dummy">
                                 <div class="mt-10 rounded text-center w-full h-full flex flex-col justify-between">
                                     <div>
@@ -52,7 +52,10 @@
 
                                 </div>
                             </div>
-                            
+                            <p class="rounded-lg w-full text-gray-700 py-3 px-4 bg-white shadow-md shadow-green-200">
+                                <span class="font-medium text-yellow-500">Attention!</span>
+                                Scanned QR Code information will show here.
+                            </p>
                         </div>
                         <div class="border-2 border-green-300 content-none h-full"></div>
                         <div class="`flex flex-col gap-9 h-full">

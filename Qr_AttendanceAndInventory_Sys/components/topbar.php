@@ -13,7 +13,7 @@
       
         <div class="flex mr-5 gap-5">
             <!-- dropdown section -->
-            <select id="states" class="px-5 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 w-full py-2">
+            <select id="section" class="px-5 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 w-full py-2">
                 <option selected>Year&Section</option>
                 <option value="1a">1A</option>
                 <option value="2a">2A</option>
@@ -22,10 +22,10 @@
                 <option value="4a">4A</option>
             </select>
              <!-- dropdown group -->
-            <select id="states" class="px-5 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 w-full py-2">
+            <select id="group" class="px-5 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 w-full py-2">
                 <option selected>Group</option>
-                <option class="hover:bg-green-500" value="1">1</option>
-                <option class="hover:bg-green-500" value="2">2</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
             </select>
 
         </div>
@@ -72,8 +72,15 @@ function upperInitial(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-let titleName = upperInitial(routeName);
+var pageName = "";
+
+if(routeName === "addstudent"){
+  var pageName = 'Add Student';
+
+}
+let titleName = upperInitial(pageName);
 var titlePage = document.getElementById('pathName');
+
 
 titlePage.innerText = titleName;
 

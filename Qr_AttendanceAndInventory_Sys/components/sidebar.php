@@ -50,12 +50,15 @@ const pathName = path.replace('/Qr_Attendance/Qr_AttendanceAndInventory_Sys/', '
 
 const links = document.querySelectorAll("a.menu");
 
+console.log(pathName);
+
 links.forEach(link => {
 
     if (pathName === link.getAttribute('href')) {
         link.classList.add("text-green-700");
         document.getElementById(pathName).classList.remove("hidden");;
-    } else {
+    }
+    else {
         link.classList.add("text-green-200");
     }
 });
