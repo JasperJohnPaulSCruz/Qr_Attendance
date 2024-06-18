@@ -15,7 +15,7 @@
 </head>
 <body>
     <div class="flex justify-around h-screen w-screen bg-[url('assets/img/maingate.png')] bg-cover bg-center font-poppins">
-        <div class="flex justify-center items-center h-full w-full bg-green-800 bg-opacity-50">    
+        <div class="flex justify-center items-center h-full w-full bg-green-800 bg-opacity-5    0">    
             <div class=" flex flex-col items-center border rounded shadow pb-10 pt-[50px] px-5 bg-white">
                 <div class="relative flex flex-col justify-center items-center">
                     <img class="absolute bottom-[60px] p-2 bg-white rounded-full" src="assets/img/bulsuhag.png" width="120px" >
