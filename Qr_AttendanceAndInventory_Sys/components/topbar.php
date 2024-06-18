@@ -47,13 +47,13 @@
         <div class="z-50 hidden my-4 text-base list-none divide-y divide-gray-100 rounded-lg shadow-md bg-emerald-950" id="user-dropdown">
           <ul class="py-2" aria-labelledby="user-menu-button">
             <li>
-              <a href="#" class="block px-10 py-2 text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Profile</a>
+              <a href="#" class="block px-10 py-2 text-gray-200 hover:bg-gray-100 hover:text-gray-800">Profile</a>
             </li>
             <li>
-              <a href="#" class="block px-10 py-2 text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Change Password</a>
+              <a href="#" class="block px-10 py-2 text-gray-200 hover:bg-gray-100 hover:text-gray-800">Change Password</a>
             </li>
             <li>
-              <a href="#" class="block px-10 py-2 text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
+              <a href="#" class="block px-10 py-2 text-gray-200 hover:bg-gray-100 hover:text-gray-800">Sign out</a>
             </li>
           </ul>
         </div>
@@ -66,22 +66,22 @@
 <script>
 
 const route = window.location.pathname;
-const  routeName = path.replace('/Qr_Attendance/Qr_AttendanceAndInventory_Sys/', '');
+var routeName = route.replace('/Qr_Attendance/Qr_AttendanceAndInventory_Sys/', '');
 
 function upperInitial(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-var pageName = "";
-
 if(routeName === "addstudent"){
-  var pageName = 'Add Student';
-
+  routeName = 'Add Student';
 }
-let titleName = upperInitial(pageName);
-var titlePage = document.getElementById('pathName');
+
+  let titleName = upperInitial(routeName);
+  var titlePage = document.getElementById('pathName');
 
 
-titlePage.innerText = titleName;
+  titlePage.innerText = titleName;
+
+
 
 </script>

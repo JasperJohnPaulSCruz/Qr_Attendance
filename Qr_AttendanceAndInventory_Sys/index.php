@@ -28,13 +28,13 @@
 
         <?php include "components/topbar.php"; ?>
 
-        <div class="flex justify-around h-screen w-screen font-poppins pt-12 bg-green-50">
-            <div class="flex justify-around items-center w-full  bg-opacity-75">
+        <div class="flex justify-around h-screen w-screen font-poppins pt-[100px] bg-green-50">
+            <div class="flex  w-full  bg-opacity-75">
                 <!-- left -->
-                <div class="h-full w-full flex flex-col justify-center items-center"> 
+                <div class="h-full w-full flex flex-col items-center"> 
                     
                     <div class="flex gap-9">
-                        <div class=" flex flex-col justify-center items-center">
+                        <div class=" flex flex-col items-center">
                             <p class="rounded-lg w-full text-gray-700 py-3 px-4 bg-white shadow-md shadow-green-200">
                                 <span class="font-medium text-green-500">Success!</span>
                                 Student QR Code Scan completed!
@@ -47,7 +47,7 @@
                                         <p class="text-gray-100  uppercase">BSIT 4A - G1</p>
                                         <p class="text-gray-50 font-medium uppercase">2019-600123</p>
                                     </div>
-                                    <div class="mt-5 content-none border-2 border-gray-100"></div>
+                                    <div class="mt-5 content-none border border-gray-100"></div>
                                     <p class="text-gray-100 tracking-wider">May 4, 2000</p>
 
                                 </div>
@@ -57,7 +57,7 @@
                                 Scanned QR Code information will show here.
                             </p>
                         </div>
-                        <div class="border-2 border-green-300 content-none h-full"></div>
+                        <div class="border-2 border-teal-500 border-opacity-50 content-none h-full"></div>
                         <div class="`flex flex-col gap-9 h-full">
                             
                             <div class="grid grid-cols-3 w-full gap-9 mb-7">
@@ -151,6 +151,78 @@
                                             <td class="px-6 py-4 font-bold font-roboto">
                                                 <p class="text-red-600">Absent</p>
                                             </td>
+                                        </tr>
+                                        <tr class="bg-white border-b ">
+                                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                                                Apple MacBook Pro 17"
+                                            </th>
+                                            <td class="px-6 py-4">
+                                                Silver
+                                            </td>
+                                            <td class="px-6 py-4">
+                                                Laptop
+                                            </td>
+                                            <td class="px-6 py-4">
+                                                $2999
+                                            </td>
+                                            <td class="px-6 py-4 font-bold font-roboto">
+                                                <p class="text-green-600">Present</p>
+                                            </td>
+                                            
+                                        </tr>
+                                        <tr class="bg-white border-b ">
+                                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                                                Apple MacBook Pro 17"
+                                            </th>
+                                            <td class="px-6 py-4">
+                                                Silver
+                                            </td>
+                                            <td class="px-6 py-4">
+                                                Laptop
+                                            </td>
+                                            <td class="px-6 py-4">
+                                                $2999
+                                            </td>
+                                            <td class="px-6 py-4 font-bold font-roboto">
+                                                <p class="text-green-600">Present</p>
+                                            </td>
+                                            
+                                        </tr>
+                                        <tr class="bg-white border-b ">
+                                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                                                Apple MacBook Pro 17"
+                                            </th>
+                                            <td class="px-6 py-4">
+                                                Silver
+                                            </td>
+                                            <td class="px-6 py-4">
+                                                Laptop
+                                            </td>
+                                            <td class="px-6 py-4">
+                                                $2999
+                                            </td>
+                                            <td class="px-6 py-4 font-bold font-roboto">
+                                                <p class="text-green-600">Present</p>
+                                            </td>
+                                            
+                                        </tr>
+                                        <tr class="bg-white border-b ">
+                                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                                                Apple MacBook Pro 17"
+                                            </th>
+                                            <td class="px-6 py-4">
+                                                Silver
+                                            </td>
+                                            <td class="px-6 py-4">
+                                                Laptop
+                                            </td>
+                                            <td class="px-6 py-4">
+                                                $2999
+                                            </td>
+                                            <td class="px-6 py-4 font-bold font-roboto">
+                                                <p class="text-green-600">Present</p>
+                                            </td>
+                                            
                                         </tr>
                                         <tr class="bg-white">
                                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">

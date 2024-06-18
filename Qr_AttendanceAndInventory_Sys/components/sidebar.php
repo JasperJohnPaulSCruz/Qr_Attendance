@@ -21,6 +21,15 @@
           <div id="students" class=" hidden absolute right-0 h-[40px] border-[6px] border-transparent border-r-green-500 content-none rounded-lg"></div>
         </div>
 
+        <div class="flex w-full justify-center items-center" alt="users">
+          <li class="my-5">
+            <a href="users" class="menu ">
+              <svg class="text-[30px]" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M18 21a8 8 0 0 0-16 0"/><circle cx="10" cy="8" r="5"/><path d="M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3"/></g></svg>
+            </a>
+          </li>
+          <div id="users" class=" hidden absolute right-0 h-[40px] border-[6px] border-transparent border-r-green-500 content-none rounded-lg"></div>
+        </div>
+
         <div class="flex w-full justify-center items-center">
           <li class="my-5">
             <a href="inventory" class="menu ">

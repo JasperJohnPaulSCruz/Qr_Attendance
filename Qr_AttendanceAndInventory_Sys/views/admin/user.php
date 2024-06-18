@@ -6,11 +6,6 @@
         //     header("Location: login.php");
         //     exit;
         // }
-
-        $checkRoute = str_replace('/Qr_Attendance/Qr_AttendanceAndInventory_Sys/', '', $_SERVER["REQUEST_URI"]);
-        if($checkRoute === '' || $checkRoute === '/' ){
-            header("Location: home");
-        }
     ?>
 
     <!DOCTYPE html>
@@ -47,20 +42,20 @@
                         <a 
                         type="button"
                         href="addstudent" 
-                        class="w-40 text-white text-center bg-teal-700 hover:bg-teal-800 focus:ring-4 focus:ring-teal-300 font-medium rounded-lg text-sm px-5 py-2.5   focus:outline-none ">
-                        Add Student
+                        class="w-40 text-center text-white bg-teal-700 hover:bg-teal-800 focus:ring-4 focus:ring-teal-300 font-medium rounded-lg text-sm px-5 py-2.5   focus:outline-none ">
+                        Add User
                         </a>
                     </div>
                     <div class="relative overflow-x-auto shadow-md shadow-green-200 rounded-lg">
 
                         <table class="w-full text-sm text-left rtl:text-right text-gray-500">
                             <caption class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white ">
-                                Student
+                                User
                             </caption>
                             <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                                 <tr>
                                     <th scope="col" class="px-6 py-3">
-                                        Student Name
+                                        Name
                                     </th>
                                     <th scope="col" class="px-6 py-3">
                                         ID Number
@@ -78,8 +73,12 @@
                             </thead>
                                 <tbody>
                                     <tr class="bg-white border-b ">
-                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                                            Lorem, ipsum dolor sit amet consectetur
+                                        <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                            <img class="w-10 h-10 rounded-full" src="https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250" alt="Jese image">
+                                            <div class="ps-3">
+                                                <div class="text-base font-semibold">Neil Sims</div>
+                                                <div class="font-normal text-gray-500">neil.sims@flowbite.com</div>
+                                            </div>  
                                         </th>
                                         <td class="px-6 py-4">
                                             Silver
