@@ -2,8 +2,8 @@
 
 <?php include "sidebar.php";?>
 
-<nav class="absolute pt-3 w-full border-gray-200 ">
-  <div class="max-w-screen-xl px-7  bg-white rounded-lg flex flex-wrap items-center justify-between mx-auto shadow-md shadow-green-200">
+<nav class="absolute pt-3 w-full border-gray-200  px-[130px]">
+  <div class=" px-7  bg-white rounded-lg flex flex-wrap items-center justify-between mx-auto shadow-md shadow-green-200">
     <div class=" w-auto flex justify-center items-center" id="navbar-multi-level">
       
       <p id="pathName" class="font-extrabold tracking-wide text-gray-900 text-[18px]"></p>
@@ -74,7 +74,10 @@ function upperInitial(str) {
 
 if(routeName === "addstudent"){
   routeName = 'Add Student';
-}
+} 
+else if(routeName === "attendanceoverview"){
+  routeName = 'Attendance Overview';
+} 
 
   let titleName = upperInitial(routeName);
   var titlePage = document.getElementById('pathName');

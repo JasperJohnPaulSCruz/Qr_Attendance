@@ -23,6 +23,11 @@ else if($router == 'addstudent'){
     exit;
 
 }
+else if($router == 'attendanceoverview'){
+    include 'views/attendanceoverview.php';
+    exit;
+
+}
 // admin
 else if($router == 'users'){
     include 'views/admin/user.php';

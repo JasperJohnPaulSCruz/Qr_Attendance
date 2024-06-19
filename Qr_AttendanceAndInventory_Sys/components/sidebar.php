@@ -14,6 +14,15 @@
 
         <div class="flex w-full justify-center items-center">
           <li class="my-5">
+            <a href="attendanceoverview" class="menu ">
+            <svg class="text-[30px]" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16"><path fill="currentColor" fill-rule="evenodd" d="M1.5 8a6.5 6.5 0 1 1 7.348 6.445a.75.75 0 1 1-.194-1.487A5.001 5.001 0 1 0 4.5 11.57v-1.32a.75.75 0 0 1 1.5 0v3a.75.75 0 0 1-.75.75h-3a.75.75 0 0 1 0-1.5h1.06A6.48 6.48 0 0 1 1.5 8M8 4.25a.75.75 0 0 1 .75.75v2.625l1.033.775a.75.75 0 1 1-.9 1.2l-1.333-1a.75.75 0 0 1-.3-.6V5A.75.75 0 0 1 8 4.25" clip-rule="evenodd"/></svg>
+            </a>
+          </li>
+          <div id="attendanceoverview" class=" hidden absolute right-0 h-[40px] border-[6px] border-transparent border-r-green-500 content-none rounded-lg"></div>
+        </div>
+
+        <div class="flex w-full justify-center items-center">
+          <li class="my-5">
             <a href="students" class="menu ">
               <svg class="text-[30px]" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M18 21a8 8 0 0 0-16 0"/><circle cx="10" cy="8" r="5"/><path d="M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3"/></g></svg>
             </a>
