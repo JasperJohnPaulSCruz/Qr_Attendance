@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Login</title>
+    <title>QR Attendance Management with Inventory System</title>
 
     <link rel="icon" href="assets/img/bulsuhag.png" type="image/x-icon">
     <link rel="shortcut icon" href="assets/img/bulsuhag.png" type="image/x-icon">
@@ -14,8 +14,8 @@
     <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-    <div class="flex justify-around h-screen w-screen bg-[url('assets/img/maingate.png')] bg-cover bg-center font-poppins">
-        <div class="flex justify-center items-center h-full w-full bg-green-800 bg-opacity-5    0">    
+    <div class="flex justify-around h-screen w-screen bg-[url('assets/img/bg2.jpg')] bg-cover bg-center font-poppins">
+        <div class="flex justify-center items-center h-full w-full bg-red-950 bg-opacity-35">    
             <div class=" flex flex-col items-center border rounded shadow pb-10 pt-[50px] px-5 bg-white">
                 <div class="relative flex flex-col justify-center items-center">
                     <img class="absolute bottom-[60px] p-2 bg-white rounded-full" src="assets/img/bulsuhag.png" width="120px" >
@@ -23,7 +23,7 @@
                     <p class="text-[16px] font-bold mb-5 uppercase text-gray-900">Attendance Management System</p>
                 </div>
 
-                <form action="" method="POST" class="w-full" >
+                <form action="verify.php" method="POST" class="w-full" >
                     <label for="email" class="tracking-wide block mb-1 text-[11px] text-gray-900 uppercase font-bold">Email</label>
                     <input type="email" class="w-full border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block p-2.5 outline-0 placeholder:tracking-wide" name="email" id="email" placeholder="Enter your Email Address">
                     <p class="opacity-0 mb-0.25 px-2 text-[11px] text-red-600 "><span class="font-medium">Oops!</span> Credential is wrong!</p>
@@ -38,7 +38,7 @@
 
                     <p class="opacity-0 mb-0.25 px-2 text-[11px] text-red-600 "><span class="font-medium">Oops!</span> Credential is wrong!</p>
 
-                    <button type="submit" class="mt-2 w-full text-white bg-green-700 hover:bg-green-900 focus:ring-4 focus:ring-blue-300 font-medium rounded text-sm px-5 py-1 me-2 focus:outline-none">Login</button>
+                    <button name="login" type="submit" class="mt-2 w-full text-white bg-green-700 hover:bg-green-900 focus:ring-4 focus:ring-blue-300 font-medium rounded text-sm px-5 py-2 me-2 focus:outline-none">Login</button>
                     <p class=" px-2 text-[12px] text-gray-600 ">Did you forgot your password? <a href="forgotPassword.php" class="font-medium text-black">Reset Password</a></p>
 
                 </form>

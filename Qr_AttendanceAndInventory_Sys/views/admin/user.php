@@ -18,7 +18,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Home</title>
+        <title>Admin</title>
         <link rel="icon" href="assets/img/bulsuhag.png" type="image/x-icon">
         <link rel="shortcut icon" href="assets/img/bulsuhag.png" type="image/x-icon">
         <script src="https://cdn.tailwindcss.com"></script>
@@ -104,7 +104,6 @@
                             <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                                 <tr>
                                     <th scope="col" class="px-6 py-3">
-                                        Student Name
                                     </th>
                                     <th scope="col" class="px-6 py-3">
                                         ID Number

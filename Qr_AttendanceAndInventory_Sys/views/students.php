@@ -1,16 +1,12 @@
-<?php
+    <?php
         session_start();
 
-        // if(!isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == "true")
-        // {
-        //     header("Location: login.php");
-        //     exit;
-        // }
-
-        $checkRoute = str_replace('/Qr_Attendance/Qr_AttendanceAndInventory_Sys/', '', $_SERVER["REQUEST_URI"]);
-        if($checkRoute === '' || $checkRoute === '/' ){
-            header("Location: home");
+        if(!isset($_SESSION['loggedin']) && !$_SESSION['loggedin'] == "true")
+        {
+            header("Location: login.php");
+            exit;
         }
+
     ?>
 
     <!DOCTYPE html>
@@ -18,7 +14,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Home</title>
+        <title>QR Attendance Management with Inventory System</title>
         <link rel="icon" href="assets/img/bulsuhag.png" type="image/x-icon">
         <link rel="shortcut icon" href="assets/img/bulsuhag.png" type="image/x-icon">
         <script src="https://cdn.tailwindcss.com"></script>

@@ -1,11 +1,11 @@
     <?php
         session_start();
 
-        // if(!isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == "true")
-        // {
-        //     header("Location: login.php");
-        //     exit;
-        // }
+        if(!isset($_SESSION['loggedin']) && !$_SESSION['loggedin'] == "true")
+        {
+            header("Location: login.php");
+            exit;
+        }
 
         $checkRoute = str_replace('/Qr_Attendance/Qr_AttendanceAndInventory_Sys/', '', $_SERVER["REQUEST_URI"]);
         if($checkRoute === '' || $checkRoute === '/' ){
@@ -18,11 +18,54 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Home</title>
+        <title>QR Attendance Management with Inventory System</title>
         <link rel="icon" href="assets/img/bulsuhag.png" type="image/x-icon">
         <link rel="shortcut icon" href="assets/img/bulsuhag.png" type="image/x-icon">
         <script src="https://cdn.tailwindcss.com"></script>
         <link rel="stylesheet" href="assets/style.css">
+        <script src="assets/script.js"></script>
+
+        <script>
+        function reloadTable() {
+            var table = document.getElementById('attendancetoday');
+            // alert('Table reloaded!');
+        }
+
+        function checkSessionChange() {
+            var currentSessionValueofGroup = "<?php echo isset($_SESSION['groupnumber']) ? $_SESSION['groupnumber'] : '' ?>";
+            var currentSessionValueofSection = "<?php echo isset($_SESSION['section']) ? $_SESSION['section'] : '' ?>";
+
+            
+            setInterval(function() {
+                var xhr = new XMLHttpRequest();
+                
+                xhr.open('GET', 'session.php', true);
+                xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                
+                xhr.onload = function() {
+                    if (xhr.status == 200) {
+                        var serverSessionValueforGroup = xhr.responseText.substring(2, 4);
+                        var serverSessionValueforSection = xhr.responseText.substring(0, 2);
+
+                        if (currentSessionValueofGroup !== serverSessionValueforGroup || currentSessionValueofSection !== serverSessionValueforSection) {
+                            reloadTable();
+                            currentSessionValueofGroup = serverSessionValueforGroup;
+                            currentSessionValueofSection = serverSessionValueforSection;
+                        }
+                    } else {
+                        console.error('Error checking session.');
+                    }
+                };
+                
+                xhr.send();
+            }, 5000);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            checkSessionChange();
+        });
+
+        </script>
     </head>
     <body>
 
@@ -88,10 +131,12 @@
                             </div>
 
                             <div class="relative overflow-x-auto shadow-md shadow-green-200 rounded-lg">
-                                <table class="w-full text-sm text-left rtl:text-right text-gray-500">
-                                    <caption class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white ">
+                                <table class="w-full text-sm text-left text-gray-500" id="attendancetoday">
+                                    <caption class="relative p-5 text-lg font-semibold text-left text-gray-900 bg-white">
                                         Attendance Today
+                                        <a class="absolute right-3 text-[12px] font-medium text-green-800 hover:drop-shadow-md hover:drop-shadow-teal-900" href="attendanceoverview">View All  ></a>
                                     </caption>
+                                    
                                     <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                                         <tr>
                                             <th scope="col" class="px-6 py-3">

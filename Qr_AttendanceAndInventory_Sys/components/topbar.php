@@ -1,19 +1,19 @@
+
 <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
 
 <?php include "sidebar.php";?>
 
 <nav class="absolute pt-3 w-full border-gray-200  px-[130px]">
-  <div class=" px-7  bg-white rounded-lg flex flex-wrap items-center justify-between mx-auto shadow-md shadow-green-200">
+  <div class=" px-[50px]  bg-white rounded-lg flex items-center justify-between mx-auto shadow-md shadow-green-200">
     <div class=" w-auto flex justify-center items-center" id="navbar-multi-level">
-      
       <p id="pathName" class="font-extrabold tracking-wide text-gray-900 text-[18px]"></p>
     </div>
 
-    <div class="flex items-center font-poppins">
+    <div class="flex items-center flex-between font-poppins">
       
-        <div class="flex mr-5 gap-5">
+        <div class="flex w-full mr-5 gap-5">
             <!-- dropdown section -->
-            <select id="section" class="px-5 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 w-full py-2">
+            <select name="section" id="section" class="cursor-pointer px-5 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 hover:bg-gray-50 w-[180px] py-2">
                 <option selected>Year&Section</option>
                 <option value="1a">1A</option>
                 <option value="2a">2A</option>
@@ -22,24 +22,22 @@
                 <option value="4a">4A</option>
             </select>
              <!-- dropdown group -->
-            <select id="group" class="px-5 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 w-full py-2">
+            <select name="groupnumber" id="groupnumber" class="cursor-pointer px-5 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 hover:bg-gray-50 w-[130px] py-2">
                 <option selected>Group</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
+                <option value="g1">G1</option>
+                <option value="g2">G2</option>
             </select>
 
         </div>
-
-
       
       <div class="border border-gray-300 content-none h-[30px] mr-[20px]"></div>
       <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
 
-        <button type="button" class="px-1 py-2 flex justify-between align-center items-center text-sm rounded-full md:me-0" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+        <button type="button" class=" py-2 flex justify-between align-center items-center text-sm rounded-full w-full" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
           <img class="w-12 h-12 rounded-full" src="https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250" alt="user photo">
-          <div class="px-3">
-            <p class="font-bold tracking-wide text-[16px] text-gray-900 text-start">Juan Dela Cruz Jr.</p>
-            <p class="text-gray-500 tracking-wide text-start font-medium ">Faculty</p>
+          <div class="px-3 text-nowrap">
+            <p class="font-bold tracking-wide text-[16px] text-gray-900 text-start w-full"><?php echo $_SESSION['name'];?></p>
+            <p class="text-gray-500 tracking-wide text-start font-medium "><?php echo $_SESSION['role'];?></p>
           </div>
         </button>
 
@@ -53,7 +51,7 @@
               <a href="#" class="block px-10 py-2 text-gray-200 hover:bg-gray-100 hover:text-gray-800">Change Password</a>
             </li>
             <li>
-              <a href="#" class="block px-10 py-2 text-gray-200 hover:bg-gray-100 hover:text-gray-800">Sign out</a>
+              <a href="logout.php" class="block px-10 py-2 text-gray-200 hover:bg-gray-100 hover:text-gray-800">Sign out</a>
             </li>
           </ul>
         </div>
@@ -62,7 +60,7 @@
   </div>
 </nav>
 
-
+<!-- For route name and display -->
 <script>
 
 const route = window.location.pathname;
@@ -85,6 +83,47 @@ else if(routeName === "attendanceoverview"){
 
   titlePage.innerText = titleName;
 
-
-
 </script>
+
+
+<!-- If the dropdown is change create a session for it -->
+<script>
+
+function updateSession(selectedElementId, newValue) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'session.php', true);
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr.send(selectedElementId + '=' + encodeURIComponent(newValue));
+    
+    xhr.onload = function() {
+        if (xhr.status == 200) {
+            console.log('Session variable set successfully for ' + selectedElementId);
+            console.log(xhr.responseText);
+        } else {
+            console.error('Error setting session variable.');
+        }
+    };
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Select the first select element
+    var selectedSection = document.getElementById('section');
+
+    // Add change event listener
+    selectedSection.addEventListener('change', function() {
+        var selectedOption = selectedSection.value;
+        updateSession('section', selectedOption);
+    });
+
+    // Select the second select element
+    var selectedGroup = document.getElementById('groupnumber');
+
+    // Add change event listener
+    selectedGroup.addEventListener('change', function() {
+        var selectedOption = selectedGroup.value;
+        updateSession('groupnumber', selectedOption);
+    });
+});
+</script>
+
+

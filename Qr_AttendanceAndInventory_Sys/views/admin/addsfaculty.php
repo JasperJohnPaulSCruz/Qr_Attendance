@@ -1,12 +1,16 @@
-    <?php
+<?php
         session_start();
 
-        if(!isset($_SESSION['loggedin']) && !$_SESSION['loggedin'] == "true")
-        {
-            header("Location: login.php");
-            exit;
-        }
+        // if(!isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == "true")
+        // {
+        //     header("Location: login.php");
+        //     exit;
+        // }
 
+        $checkRoute = str_replace('/Qr_Attendance/Qr_AttendanceAndInventory_Sys/', '', $_SERVER["REQUEST_URI"]);
+        if($checkRoute === '' || $checkRoute === '/' ){
+            header("Location: home");
+        }
     ?>
 
     <!DOCTYPE html>
@@ -19,78 +23,55 @@
         <link rel="shortcut icon" href="assets/img/bulsuhag.png" type="image/x-icon">
         <script src="https://cdn.tailwindcss.com"></script>
         <link rel="stylesheet" href="assets/style.css">
-        <!-- <script src="./assets/script.js"></script> -->
 
     </head>
     <body>
 
-    <div id="alert-2" class="<?php if(isset($_SESSION['studentExist'])){ echo "flex";}else{echo "hidden";}?> absolute top-20 right-10 z-50 items-center p-4 mb-4 text-red-800 rounded-lg bg-red-50" role="alert">
-    <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-        <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
-    </svg>
-    <span class="sr-only">Info</span>
-    <div class="ms-3 text-sm font-medium">
-        <?php if(isset($_SESSION['studentExist'])){ echo $_SESSION['studentExist'];}?>
-    </div>
-    <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-red-50 text-red-500 rounded-lg focus:ring-2 focus:ring-red-400 p-1.5 hover:bg-red-200 inline-flex items-center justify-center h-8 w-8" 
-      data-dismiss-target="#alert-2" aria-label="Close">
-        <span class="sr-only">Close</span>
-        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-        </svg>
-    </button>
-    </div>
-
         <?php include "components/topbar.php"; ?>
 
         <div class="flex justify-center font-poppins h-screen w-full pt-[120px] bg-green-50">
-            <div class="bg-opacity-75 flex flex-col w-full px-[200px] gap-9">
+            <div class="bg-opacity-75">
                 
-                <form action="./add.php" method="POST" class="flex flex-col gap-5" enctype="multipart/form-data">
+                <form action="" method="POST" class="flex flex-col gap-5" >
                     <!-- The whole card -->
                     <div class=" w-full ">
 
                         <div class="w-full relative gap-5 flex bg-white p-7 rounded-lg shadow-md shadow-green-200">
-                            
-                            <!-- Input avater for student or user -->
                             <div id="dropArea">
-                                <label for="avatar" class="tracking-wide block text-[11px] text-gray-900 uppercase font-bold">Student Picture</label>
+                                <label for="name" class="tracking-wide block text-[11px] text-gray-900 uppercase font-bold">Student Picture</label>
                                 <div id="avatar" class="flex items-center justify-center">
-                                    <label  for="dropzone-file" class="dropArea overflow-hiddwn flex flex-col items-center justify-center  w-[200px] h-[200px] border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50">
+                                    <label for="dropzone-file" class="flex flex-col items-center justify-center  w-[200px] h-[200px] h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50">
                                         <div class="flex flex-col items-center justify-center pt-5 pb-6">
                                             <svg class="w-8 h-8 mb-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
                                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
                                             </svg>  
-                                            <p class="dragText mb-2 text-[10px] text-gray-500"><span class="font-semibold">Click to upload</span> or drag and drop</p>
-                                            <p class="text-[10px] text-gray-500">SVG, PNG, JPG or JPEG</p>
+                                            <p class="mb-2 text-[10px] text-gray-500"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+                                            <p class="text-[10px] text-gray-500">SVG, PNG, JPG or GIF</p>
                                         </div>
-                                        <input ondrop="dropHandler(event)" ondragover="dragOverHandler(event)" ondragleave="dragLeaveHandler(event)"  id="dropzone-file" type="file" class="fileInput hidden" name="studentavatar" accept=".png,.jpg,.jpeg,.svg"/>
+                                        <input id="dropzone-file" type="file" class="hidden" />
                                     </label>
-                                    <div id="preview" class="previewImage">
-                                        
-                                    </div>
                                 </div> 
                             </div>
 
-                            <div id="allinputs" class="w-full">
+                            <div id="allinputs">
                                 <label for="name" class="tracking-wide block mb-1 text-[11px] text-gray-900 uppercase font-bold">Student Name</label>
-                                <div id="name" class="flex gap-5 w-full">
-                                    <div id="firstname" class="w-full">
+                                <div id="name" class="flex gap-5">
+                                    <div id="firstname">
                                         <input type="text" class="w-full border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block p-2.5 outline-0 placeholder:tracking-wide" 
-                                        name="fname" id="fname" placeholder="First Name" required>
+                                        name="fname" id="fname" placeholder="First Name">
                                         <p class="opacity-0 mb-0.25 px-2 text-[11px] text-red-600 "><span class="font-medium">Oops!</span> Credential is wrong!</p>
                                     </div>
-                                    <div id="middlename" class="w-full">
+                                    <div id="middlename">
                                         <input type="text" class="w-full border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block p-2.5 outline-0 placeholder:tracking-wide" 
                                         name="mname" id="mname" placeholder="Middle Name">
                                         <p class="opacity-0 mb-0.25 px-2 text-[11px] text-red-600 "><span class="font-medium">Oops!</span> Credential is wrong!</p>
                                     </div>
-                                    <div id="firstname" class="w-full">
+                                    <div id="firstname">
                                         <input type="text" class="w-full border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block p-2.5 outline-0 placeholder:tracking-wide" 
-                                        name="lname" id="lname" placeholder="Last Name" required>
+                                        name="lname" id="lname" placeholder="Last Name">
                                         <p class="opacity-0 mb-0.25 px-2 text-[11px] text-red-600 "><span class="font-medium">Oops!</span> Credential is wrong!</p>
                                     </div>
-                                    <div id="suffix" class="w-full">
+                                    <div id="suffix">
                                         <input type="text" class="w-full border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block p-2.5 outline-0 placeholder:tracking-wide" 
                                         name="suffix" id="suffix" placeholder="Suffix">
                                         <p class="opacity-0 mb-0.25 px-2 text-[11px] text-red-600 "><span class="font-medium">Oops!</span> Credential is wrong!</p>
@@ -98,31 +79,33 @@
                                 </div>
 
                                 
-                                <div class="flex gap-5 w-full">
+                                <div id="name" class="flex gap-5">
 
                                     <div class="w-full">
                                         <label for="idnumber" class="tracking-wide block mb-1 text-[11px] text-gray-900 uppercase font-bold">ID Number</label>
                                         <input type="text" class="w-full border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block p-2.5 outline-none placeholder:tracking-wide" 
-                                        name="idnumber" id="idnumber" placeholder="ID Number" required>
+                                        name="idnumber" id="idnumber" placeholder="Id Number">
                                         <p class="opacity-0 mb-0.25 px-2 text-[11px] text-red-600 "><span class="font-medium">Oops!</span> Credential is wrong!</p>
                                     </div>
 
                                     <div class="w-full">
                                         <label for="email" class="tracking-wide block mb-1 text-[11px] text-gray-900 uppercase font-bold">Email</label>
-                                        <input type="email" class="w-full border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block p-2.5 outline-none placeholder:tracking-wide" 
-                                        name="email" id="email" placeholder="Email Address" required>
+                                        <input type="text" class="w-full border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block p-2.5 outline-none placeholder:tracking-wide" 
+                                        name="email" id="email" placeholder="Id Number">
                                         <p class="opacity-0 mb-0.25 px-2 text-[11px] text-red-600 "><span class="font-medium">Oops!</span> Credential is wrong!</p>
                                     </div>
 
+
                                 </div>
 
-                                <div class="grid grid-flow-col grid-cols-4 gap-5">
+                                <div id="name" class="grid grid-flow-col grid-cols-4 gap-5">
 
                                     <div class="w-full">
                                         <label for="section" class="tracking-wide block mb-1 text-[11px] text-gray-900 uppercase font-bold">Year and Section</label>
                                         <select class="w-full p-[10.5px] px-4 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block  outline-none" 
-                                        id="section" name="section" required>
-                                            <option value="1a" selected>1A</option>
+                                        id="section">
+                                            <option selected>Year&Section</option>
+                                            <option value="1a">1A</option>
                                             <option value="2a">2A</option>
                                             <option value="2b">2B</option>
                                             <option value="3a">3A</option>
@@ -134,9 +117,10 @@
                                     <div class="w-full">
                                         <label for="group" class="tracking-wide block mb-1 text-[11px] text-gray-900 uppercase font-bold">Group Number</label>
                                         <select class="w-full p-[10.5px] px-4 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block  outline-none" 
-                                        id="group" name="groupnumber" required>
-                                            <option value="g1" selected>G1</option>
-                                            <option value="g2">G2</option>
+                                        id="group">
+                                            <option selected>Group</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
                                         </select> 
                                         <p class="opacity-0 mb-0.25 px-2 text-[11px] text-red-600 "><span class="font-medium">Oops!</span> Credential is wrong!</p>
                                     </div>
@@ -147,11 +131,14 @@
                             
 
                             <div class="absolute right-5 bottom-5 flex items-center gap-2">
-                                
-                                <button type="submit" name="addanother"
+                                <button type="button" 
+                                class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1M6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1z"/></svg>
+                                </button>
+                                <button type="button" type="submit" 
                                 class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none ">
                                 Add Another</button>
-                                <button type="submit" name="addstudent"
+                                <button type="button" type="submit" 
                                 class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none ">
                                 Add</button>
                             </div>
@@ -159,7 +146,6 @@
                     </div>
                     <!-- End of The whole card -->
 
-                </form>
                     
 
                     <div class="relative overflow-x-auto shadow-md shadow-green-200 rounded-lg">
@@ -321,6 +307,7 @@
 
                     
 
+                </form>
 
             </div>
         </div>
