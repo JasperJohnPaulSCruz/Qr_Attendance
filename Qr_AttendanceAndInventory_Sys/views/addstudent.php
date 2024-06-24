@@ -19,7 +19,7 @@
         <link rel="shortcut icon" href="assets/img/bulsuhag.png" type="image/x-icon">
         <script src="https://cdn.tailwindcss.com"></script>
         <link rel="stylesheet" href="assets/style.css">
-        <!-- <script src="./assets/script.js"></script> -->
+        <script src="./assets/script.js"></script>
 
     </head>
     <body>
@@ -46,17 +46,17 @@
         <div class="flex justify-center font-poppins h-screen w-full pt-[120px] bg-green-50">
             <div class="bg-opacity-75 flex flex-col w-full px-[200px] gap-9">
                 
-                <form action="./add.php" method="POST" class="flex flex-col gap-5" enctype="multipart/form-data">
+                <form action="./add.php" method="POST" id="form" class="flex flex-col gap-5" onsubmit="return validateForm()" enctype="multipart/form-data" >
                     <!-- The whole card -->
                     <div class=" w-full ">
 
                         <div class="w-full relative gap-5 flex bg-white p-7 rounded-lg shadow-md shadow-green-200">
                             
                             <!-- Input avater for student or user -->
-                            <div id="dropArea">
+                            <div id="dropZone">
                                 <label for="avatar" class="tracking-wide block text-[11px] text-gray-900 uppercase font-bold">Student Picture</label>
                                 <div id="avatar" class="flex items-center justify-center">
-                                    <label  for="dropzone-file" class="dropArea overflow-hiddwn flex flex-col items-center justify-center  w-[200px] h-[200px] border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50">
+                                    <label  for="dropzone-file" class="dropArea relative overflow-hiddwn flex flex-col items-center justify-center  w-[200px] h-[200px] border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50">
                                         <div class="flex flex-col items-center justify-center pt-5 pb-6">
                                             <svg class="w-8 h-8 mb-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
                                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
@@ -64,7 +64,7 @@
                                             <p class="dragText mb-2 text-[10px] text-gray-500"><span class="font-semibold">Click to upload</span> or drag and drop</p>
                                             <p class="text-[10px] text-gray-500">SVG, PNG, JPG or JPEG</p>
                                         </div>
-                                        <input ondrop="dropHandler(event)" ondragover="dragOverHandler(event)" ondragleave="dragLeaveHandler(event)"  id="dropzone-file" type="file" class="fileInput hidden" name="studentavatar" accept=".png,.jpg,.jpeg,.svg"/>
+                                        <input id="dropzone-file" type="file" class="fileInput opacity-0 w-full h-full absolute" name="studentavatar" accept=".jpg,.jpeg,.png,.png"/>
                                     </label>
                                     <div id="preview" class="previewImage">
                                         
@@ -85,14 +85,21 @@
                                         name="mname" id="mname" placeholder="Middle Name">
                                         <p class="opacity-0 mb-0.25 px-2 text-[11px] text-red-600 "><span class="font-medium">Oops!</span> Credential is wrong!</p>
                                     </div>
-                                    <div id="firstname" class="w-full">
+                                    <div id="lastname" class="w-full">
                                         <input type="text" class="w-full border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block p-2.5 outline-0 placeholder:tracking-wide" 
                                         name="lname" id="lname" placeholder="Last Name" required>
                                         <p class="opacity-0 mb-0.25 px-2 text-[11px] text-red-600 "><span class="font-medium">Oops!</span> Credential is wrong!</p>
                                     </div>
-                                    <div id="suffix" class="w-full">
-                                        <input type="text" class="w-full border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block p-2.5 outline-0 placeholder:tracking-wide" 
-                                        name="suffix" id="suffix" placeholder="Suffix">
+                                    <div class="w-full">
+                                        <select class="w-full p-[10.5px] px-4 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block  outline-none" 
+                                        id="suffix" name="suffix">
+                                            <option disabled selected>Suffix</option>
+                                            <option value="jr" >Jr</option>
+                                            <option value="sr">Sr</option>
+                                            <option value="i">I</option>
+                                            <option value="ii">II</option>
+                                            <option value="iii">III</option>
+                                        </select> 
                                         <p class="opacity-0 mb-0.25 px-2 text-[11px] text-red-600 "><span class="font-medium">Oops!</span> Credential is wrong!</p>
                                     </div>
                                 </div>
@@ -100,14 +107,14 @@
                                 
                                 <div class="flex gap-5 w-full">
 
-                                    <div class="w-full">
-                                        <label for="idnumber" class="tracking-wide block mb-1 text-[11px] text-gray-900 uppercase font-bold">ID Number</label>
+                                    <div id="studentidnumber" class="w-full">
+                                        <label for="idnumber" class="tracking-wide block mb-1 text-[11px] text-gray-900 uppercase font-bold">Student Number</label>
                                         <input type="text" class="w-full border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block p-2.5 outline-none placeholder:tracking-wide" 
-                                        name="idnumber" id="idnumber" placeholder="ID Number" required>
+                                        name="idnumber" id="idnumber" placeholder="Student ID Number" required>
                                         <p class="opacity-0 mb-0.25 px-2 text-[11px] text-red-600 "><span class="font-medium">Oops!</span> Credential is wrong!</p>
                                     </div>
 
-                                    <div class="w-full">
+                                    <div  class="w-full">
                                         <label for="email" class="tracking-wide block mb-1 text-[11px] text-gray-900 uppercase font-bold">Email</label>
                                         <input type="email" class="w-full border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block p-2.5 outline-none placeholder:tracking-wide" 
                                         name="email" id="email" placeholder="Email Address" required>
@@ -122,7 +129,8 @@
                                         <label for="section" class="tracking-wide block mb-1 text-[11px] text-gray-900 uppercase font-bold">Year and Section</label>
                                         <select class="w-full p-[10.5px] px-4 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block  outline-none" 
                                         id="section" name="section" required>
-                                            <option value="1a" selected>1A</option>
+                                            <option disabled selected>Year$Section</option>
+                                            <option value="1a" >1A</option>
                                             <option value="2a">2A</option>
                                             <option value="2b">2B</option>
                                             <option value="3a">3A</option>
@@ -135,7 +143,8 @@
                                         <label for="group" class="tracking-wide block mb-1 text-[11px] text-gray-900 uppercase font-bold">Group Number</label>
                                         <select class="w-full p-[10.5px] px-4 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block  outline-none" 
                                         id="group" name="groupnumber" required>
-                                            <option value="g1" selected>G1</option>
+                                            <option disabled selected>Group</option>
+                                            <option value="g1" >G1</option>
                                             <option value="g2">G2</option>
                                         </select> 
                                         <p class="opacity-0 mb-0.25 px-2 text-[11px] text-red-600 "><span class="font-medium">Oops!</span> Credential is wrong!</p>
@@ -147,7 +156,6 @@
                             
 
                             <div class="absolute right-5 bottom-5 flex items-center gap-2">
-                                
                                 <button type="submit" name="addanother"
                                 class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none ">
                                 Add Another</button>
@@ -161,11 +169,10 @@
 
                 </form>
                     
-
-                    <div class="relative overflow-x-auto shadow-md shadow-green-200 rounded-lg">
-                                <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+                    <div class="relative w-full">
+                                <table class=" w-full shadow-md shadow-green-200 rounded-lg text-sm text-left rtl:text-right text-gray-500">
                                     <caption class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white ">
-                                        Attendance Today
+                                        Student of <span><?php echo strtoupper($_SESSION['section'])." ".strtoupper($_SESSION['groupnumber']);?></span>
                                     </caption>
                                     <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                                         <tr>
@@ -181,140 +188,13 @@
                                             <th scope="col" class="px-6 py-3">
                                                 Group
                                             </th>
-                                            <th scope="col" class="px-6 py-3">
-                                                Status
+                                            <th scope="col" class="text-center px-6 py-3">
+                                                Action
                                             </th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr class="bg-white border-b ">
-                                            <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                                <img class="w-10 h-10 rounded-full" src="https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250" alt="Jese image">
-                                                <div class="ps-3">
-                                                    <div class="text-base font-semibold">Neil Sims</div>
-                                                    <div class="font-normal text-gray-500">neil.sims@flowbite.com</div>
-                                                </div>  
-                                            </th>
-                                            <td class="px-6 py-4">
-                                                Silver
-                                            </td>
-                                            <td class="px-6 py-4">
-                                                Laptop
-                                            </td>
-                                            <td class="px-6 py-4">
-                                                $2999
-                                            </td>
-                                            <td class="px-6 py-4 font-bold font-roboto">
-                                                <p class="text-green-600">Present</p>
-                                            </td>
-                                            
-                                        </tr>
-                                        <tr class="bg-white border-b  ">
-                                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                                                Microsoft Surface Pro
-                                            </th>
-                                            <td class="px-6 py-4">
-                                                White
-                                            </td>
-                                            <td class="px-6 py-4">
-                                                Laptop PC
-                                            </td>
-                                            <td class="px-6 py-4">
-                                                $1999
-                                            </td>
-                                            <td class="px-6 py-4 font-bold font-roboto">
-                                                <p class="text-red-600">Absent</p>
-                                            </td>
-                                        </tr>
-                                        <tr class="bg-white border-b ">
-                                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                                                Apple MacBook Pro 17"
-                                            </th>
-                                            <td class="px-6 py-4">
-                                                Silver
-                                            </td>
-                                            <td class="px-6 py-4">
-                                                Laptop
-                                            </td>
-                                            <td class="px-6 py-4">
-                                                $2999
-                                            </td>
-                                            <td class="px-6 py-4 font-bold font-roboto">
-                                                <p class="text-green-600">Present</p>
-                                            </td>
-                                            
-                                        </tr>
-                                        <tr class="bg-white border-b ">
-                                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                                                Apple MacBook Pro 17"
-                                            </th>
-                                            <td class="px-6 py-4">
-                                                Silver
-                                            </td>
-                                            <td class="px-6 py-4">
-                                                Laptop
-                                            </td>
-                                            <td class="px-6 py-4">
-                                                $2999
-                                            </td>
-                                            <td class="px-6 py-4 font-bold font-roboto">
-                                                <p class="text-green-600">Present</p>
-                                            </td>
-                                            
-                                        </tr>
-                                        <tr class="bg-white border-b ">
-                                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                                                Apple MacBook Pro 17"
-                                            </th>
-                                            <td class="px-6 py-4">
-                                                Silver
-                                            </td>
-                                            <td class="px-6 py-4">
-                                                Laptop
-                                            </td>
-                                            <td class="px-6 py-4">
-                                                $2999
-                                            </td>
-                                            <td class="px-6 py-4 font-bold font-roboto">
-                                                <p class="text-green-600">Present</p>
-                                            </td>
-                                            
-                                        </tr>
-                                        <tr class="bg-white border-b ">
-                                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                                                Apple MacBook Pro 17"
-                                            </th>
-                                            <td class="px-6 py-4">
-                                                Silver
-                                            </td>
-                                            <td class="px-6 py-4">
-                                                Laptop
-                                            </td>
-                                            <td class="px-6 py-4">
-                                                $2999
-                                            </td>
-                                            <td class="px-6 py-4 font-bold font-roboto">
-                                                <p class="text-green-600">Present</p>
-                                            </td>
-                                            
-                                        </tr>
-                                        <tr class="bg-white">
-                                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                                                Magic Mouse 2
-                                            </th>
-                                            <td class="px-6 py-4">
-                                                Black
-                                            </td>
-                                            <td class="px-6 py-4">
-                                                Accessories
-                                            </td>
-                                            <td class="px-6 py-4">
-                                                $99
-                                            </td>
-                                            <td class="px-6 py-4 font-bold font-roboto">
-                                                <p class="text-yellow-600">Late</p>
-                                            </td>
-                                        </tr>
+                                        <?php include "./studentTable.php"; ?>
                                     </tbody>
                                 </table>
                             </div>
