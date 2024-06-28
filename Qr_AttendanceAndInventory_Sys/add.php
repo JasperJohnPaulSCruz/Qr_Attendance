@@ -3,6 +3,7 @@
 // sleep(3);
 
 include "connect.php";
+include "sendmail.php";
 
 date_default_timezone_set('Asia/Manila');
 
@@ -64,20 +65,25 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
         if ($sql_result) {
 
+            echo sendMail($email, $hashedid, $name);
+
             if(isset($_POST['addstudent'])){
+
                 if(isset($_SESSION['studentExist'])){
                     unset($_SESSION['studentExist']);
                 }
-                header("Location: students");
-                exit;
+                // header("Location: students");
+                // exit;
             }
             
             else if(isset($_POST['addanother'])){
+
                 if(isset($_SESSION['studentExist'])){
                     unset($_SESSION['studentExist']);
                 }
-                header("Location: addstudent");
-                exit;
+                // header("Location: addstudent");
+                // exit;
+
             }
                 
         }else{
