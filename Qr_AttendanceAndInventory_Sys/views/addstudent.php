@@ -1,6 +1,9 @@
     <?php
         session_start();
 
+        include "../components/loader.php";
+
+
         if(!isset($_SESSION['loggedin']) && !$_SESSION['loggedin'] == "true")
         {
             header("Location: login.php");
@@ -172,10 +175,9 @@
                     <div class="relative w-full">
                                 <table class=" w-full shadow-md shadow-green-200 rounded-lg text-sm text-left rtl:text-right text-gray-500">
                                     <caption class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white ">
-                                        Student of <span><?php echo strtoupper($_SESSION['section'])." ".strtoupper($_SESSION['groupnumber']);?></span>
+                                        Student of<span class="text-[20px] rounded py-1 px-2"><?php echo strtoupper($_SESSION['section'])." ".strtoupper($_SESSION['groupnumber']);?></span>
                                     </caption>
                                     <thead class="text-xs text-gray-700 uppercase bg-gray-50">
-                                        <tr>
                                             <th scope="col" class="px-6 py-3">
                                                 Student Name
                                             </th>
@@ -191,7 +193,6 @@
                                             <th scope="col" class="text-center px-6 py-3">
                                                 Action
                                             </th>
-                                        </tr>
                                     </thead>
                                     <tbody>
                                         <?php include "./studentTable.php"; ?>
@@ -207,3 +208,4 @@
 
     </body>
     </html>
+

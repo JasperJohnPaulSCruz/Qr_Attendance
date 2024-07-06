@@ -81,6 +81,9 @@ if(routeName === "addstudent"){
 else if(routeName === "attendanceoverview"){
   routeName = 'Attendance Overview';
 } 
+else if(routeName === "inventoryadmin"){
+  routeName = 'Inventory Management';
+} 
 
   let titleName = upperInitial(routeName);
   var titlePage = document.getElementById('pathName');
@@ -99,11 +102,25 @@ function updateSession(selectedElementId, newValue) {
     xhr.open('POST', 'session.php', true);
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhr.send(selectedElementId + '=' + encodeURIComponent(newValue));
-    
+
     xhr.onload = function() {
         if (xhr.status == 200) {
             console.log('Session variable set successfully for ' + selectedElementId);
             console.log(xhr.responseText);
+        } else {
+            console.error('Error setting session variable.');
+        }
+    };
+}
+
+function reloadTable() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'attendanceLogs.php', true);
+
+    xhr.readyState = function() {
+      console.log(xhr.statusText);
+        if (xhr.status == 200) {
+            console.log('Table reloaded succesfully');
         } else {
             console.error('Error setting session variable.');
         }
@@ -118,6 +135,7 @@ document.addEventListener('DOMContentLoaded', function() {
     selectedSection.addEventListener('change', function() {
         var selectedOption = selectedSection.value;
         updateSession('section', selectedOption);
+        reloadTable();
     });
 
     // Select the second select element
@@ -127,6 +145,7 @@ document.addEventListener('DOMContentLoaded', function() {
     selectedGroup.addEventListener('change', function() {
         var selectedOption = selectedGroup.value;
         updateSession('groupnumber', selectedOption);
+        reloadTable();
     });
 });
 </script>

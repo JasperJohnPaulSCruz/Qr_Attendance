@@ -34,6 +34,12 @@ else if($router == 'users'){
     exit;
 
 }
+
+else if($router == 'inventoryadmin'){
+    include 'views/admin/inventory.php';
+    exit;
+
+}
 else{
     include '404.php';
     exit;

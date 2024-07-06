@@ -1,4 +1,4 @@
-    <?php
+<?php
         session_start();
 
         if(!isset($_SESSION['loggedin']) && !$_SESSION['loggedin'] == "true")
@@ -6,6 +6,7 @@
             header("Location: login.php");
             exit;
         }
+
     ?>
 
     <!DOCTYPE html>
@@ -24,10 +25,18 @@
 
         <?php include "components/topbar.php"; ?>
 
-        <div class="flex justify-around font-poppins pt-[100px] bg-green-50">
-            <div class="flex justify-center h-full w-full bg-opacity-75">
 
-                <div class="mr-[30px] w-full px-[200px]">
+        <div class="flex h-screen justify-around font-poppins pt-[100px] bg-green-50">
+            <div class="flex justify-center h-full w-full bg-opacity-75 pl-[200px] pr-[100px] gap-5">
+
+                <div class="w-[500px] ">
+                    <div class="bg-white shadow-md shadow-green-200 rounded-lg p-5">
+                        <img class="h-auto max-w-normal rounded-lg" src="./assets/img/defaultImage.png" alt="image description">
+                        <p class="mt-5 font-normal"><span class="font-medium">Name of Item:</span> Macbook pro</p>
+                    </div>
+                </div>
+
+                <div class="mr-[30px] w-full">   
 
                     <div class=" w-full mb-5 flex gap-5">
                         <div class="relative w-full h-full flex justify-start items-center">
@@ -62,7 +71,7 @@
 
                         <table class="w-full text-sm text-left rtl:text-right text-gray-500">
                             <caption class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white ">
-                                Student
+                                Student of  <span><?php echo strtoupper($_SESSION['section'])." ".strtoupper($_SESSION['groupnumber']);?></span>
                             </caption>
                             <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                                 <tr>
@@ -78,322 +87,13 @@
                                     <th scope="col" class="px-6 py-3">
                                         Group
                                     </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Status
+                                    <th scope="col" class="text-center px-6 py-3">
+                                        Action
                                     </th>
                                 </tr>
                             </thead>
                                 <tbody>
-                                    <tr class="bg-white border-b ">
-                                        <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                            <img class="w-10 h-10 rounded-full" src="https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250" alt="Jese image">
-                                            <div class="ps-3">
-                                                <div class="text-base font-semibold">Neil Sims</div>
-                                                <div class="font-normal text-gray-500">neil.sims@flowbite.com</div>
-                                            </div>  
-                                        </th>
-                                        <td class="px-6 py-4">
-                                            Silver
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            Laptop
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            $2999
-                                        </td>
-                                        <td class="px-6 py-4 font-bold font-roboto">
-                                            <p class="text-green-600">Present</p>
-                                        </td>
-                                    </tr>
-                                    <tr class="bg-white border-b  ">
-                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                                            Microsoft Surface Pro
-                                        </th>
-                                        <td class="px-6 py-4">
-                                            White
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            Laptop PC
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            $1999
-                                        </td>
-                                        <td class="px-6 py-4 font-bold font-roboto">
-                                            <p class="text-red-600">Absent</p>
-                                        </td>
-                                    </tr>
-                                    <tr class="bg-white">
-                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                                            Magic Mouse 2
-                                        </th>
-                                        <td class="px-6 py-4">
-                                            Black
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            Accessories
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            $99
-                                        </td>
-                                        <td class="px-6 py-4 font-bold font-roboto">
-                                            <p class="text-yellow-600">Late</p>
-                                        </td>
-                                    </tr>
-                                    <tr class="bg-white">
-                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                                            Magic Mouse 2
-                                        </th>
-                                        <td class="px-6 py-4">
-                                            Black
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            Accessories
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            $99
-                                        </td>
-                                        <td class="px-6 py-4 font-bold font-roboto">
-                                            <p class="text-yellow-600">Late</p>
-                                        </td>
-                                    </tr>
-                                    <tr class="bg-white">
-                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                                            Magic Mouse 2
-                                        </th>
-                                        <td class="px-6 py-4">
-                                            Black
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            Accessories
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            $99
-                                        </td>
-                                        <td class="px-6 py-4 font-bold font-roboto">
-                                            <p class="text-yellow-600">Late</p>
-                                        </td>
-                                    </tr>
-                                    <tr class="bg-white">
-                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                                            Magic Mouse 2
-                                        </th>
-                                        <td class="px-6 py-4">
-                                            Black
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            Accessories
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            $99
-                                        </td>
-                                        <td class="px-6 py-4 font-bold font-roboto">
-                                            <p class="text-yellow-600">Late</p>
-                                        </td>
-                                    </tr>
-                                    <tr class="bg-white">
-                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                                            Magic Mouse 2
-                                        </th>
-                                        <td class="px-6 py-4">
-                                            Black
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            Accessories
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            $99
-                                        </td>
-                                        <td class="px-6 py-4 font-bold font-roboto">
-                                            <p class="text-yellow-600">Late</p>
-                                        </td>
-                                    </tr>
-                                    <tr class="bg-white">
-                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                                            Magic Mouse 2
-                                        </th>
-                                        <td class="px-6 py-4">
-                                            Black
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            Accessories
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            $99
-                                        </td>
-                                        <td class="px-6 py-4 font-bold font-roboto">
-                                            <p class="text-yellow-600">Late</p>
-                                        </td>
-                                    </tr>
-                                    <tr class="bg-white">
-                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                                            Magic Mouse 2
-                                        </th>
-                                        <td class="px-6 py-4">
-                                            Black
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            Accessories
-                                        </td>
-                                        <td class="px-6 py-4">
-                                        $99
-                                        </td>
-                                        <td class="px-6 py-4 font-bold font-roboto">
-                                            <p class="text-yellow-600">Late</p>
-                                        </td>
-                                    </tr>
-                                    <tr class="bg-white">
-                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                                            Magic Mouse 2
-                                        </th>
-                                        <td class="px-6 py-4">
-                                            Black
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            Accessories
-                                        </td>
-                                        <td class="px-6 py-4">
-                                        $99
-                                        </td>
-                                        <td class="px-6 py-4 font-bold font-roboto">
-                                            <p class="text-yellow-600">Late</p>
-                                        </td>
-                                    </tr>
-                                    <tr class="bg-white">
-                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                                            Magic Mouse 2
-                                        </th>
-                                        <td class="px-6 py-4">
-                                            Black
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            Accessories
-                                        </td>
-                                        <td class="px-6 py-4">
-                                        $99
-                                        </td>
-                                        <td class="px-6 py-4 font-bold font-roboto">
-                                            <p class="text-yellow-600">Late</p>
-                                        </td>
-                                    </tr>
-                                    <tr class="bg-white">
-                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                                            Magic Mouse 2
-                                        </th>
-                                        <td class="px-6 py-4">
-                                            Black
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            Accessories
-                                        </td>
-                                        <td class="px-6 py-4">
-                                        $99
-                                        </td>
-                                        <td class="px-6 py-4 font-bold font-roboto">
-                                            <p class="text-yellow-600">Late</p>
-                                        </td>
-                                    </tr>
-                                    <tr class="bg-white">
-                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                                            Magic Mouse 2
-                                        </th>
-                                        <td class="px-6 py-4">
-                                            Black
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            Accessories
-                                        </td>
-                                        <td class="px-6 py-4">
-                                        $99
-                                        </td>
-                                        <td class="px-6 py-4 font-bold font-roboto">
-                                            <p class="text-yellow-600">Late</p>
-                                        </td>
-                                    </tr>
-                                    <tr class="bg-white">
-                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                                            Magic Mouse 2
-                                        </th>
-                                        <td class="px-6 py-4">
-                                            Black
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            Accessories
-                                        </td>
-                                        <td class="px-6 py-4">
-                                        $99
-                                        </td>
-                                        <td class="px-6 py-4 font-bold font-roboto">
-                                            <p class="text-yellow-600">Late</p>
-                                        </td>
-                                    </tr>
-                                    <tr class="bg-white">
-                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                                            Magic Mouse 2
-                                        </th>
-                                        <td class="px-6 py-4">
-                                            Black
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            Accessories
-                                        </td>
-                                        <td class="px-6 py-4">
-                                        $99
-                                        </td>
-                                        <td class="px-6 py-4 font-bold font-roboto">
-                                            <p class="text-yellow-600">Late</p>
-                                        </td>
-                                    </tr>
-                                    <tr class="bg-white">
-                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                                            Magic Mouse 2
-                                        </th>
-                                        <td class="px-6 py-4">
-                                            Black
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            Accessories
-                                        </td>
-                                        <td class="px-6 py-4">
-                                        $99
-                                        </td>
-                                        <td class="px-6 py-4 font-bold font-roboto">
-                                            <p class="text-yellow-600">Late</p>
-                                        </td>
-                                    </tr>
-                                    <tr class="bg-white">
-                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                                            Magic Mouse 2
-                                        </th>
-                                        <td class="px-6 py-4">
-                                            Black
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            Accessories
-                                        </td>
-                                        <td class="px-6 py-4">
-                                        $99
-                                        </td>
-                                        <td class="px-6 py-4 font-bold font-roboto">
-                                            <p class="text-yellow-600">Late</p>
-                                        </td>
-                                    </tr>
-                                    <tr class="bg-white">
-                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                                            Magic Mouse 2
-                                        </th>
-                                        <td class="px-6 py-4">
-                                            Black
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            Accessories
-                                        </td>
-                                        <td class="px-6 py-4">
-                                        $99
-                                        </td>
-                                        <td class="px-6 py-4 font-bold font-roboto">
-                                            <p class="text-yellow-600">Late</p>
-                                        </td>
-                                    </tr>
+                                    <?php include "./studentTable.php"; ?>
                                 </tbody>
                         </table>
                     </div>

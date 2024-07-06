@@ -1,6 +1,5 @@
 <?php
 
-// sleep(3);
 
 include "connect.php";
 include "sendmail.php";
@@ -47,7 +46,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                     echo "Permissions set to 755 successfully for $targetPath";
                 } 
                 // Image uploaded successfully, now insert into database
-                $q = "INSERT INTO `avatar` (user_id, name,  path, datetime) VALUES ('$hashedid', '$filename', '$uploadDirectory', '$currentDate')";
+                $q = "INSERT INTO `avatar` (user_id, name,  path, datetime) VALUES ('$origid', '$filename', '$uploadDirectory', '$currentDate')";
                 $q_result = mysqli_query($conn, $q);
         
                 if ($q_result) {
@@ -59,8 +58,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 echo "Failed to move uploaded file.";
             }
         }
+        
+        $facultyName = $_SESSION['name'];
 
-        $sql = "INSERT INTO `student`(user_id, name, email, student_number, section, group_no, datetime) VALUES ('$hashedid','$name ','$email','$student_number','$section','$groupnumber', '$currentDate')";
+        $sql = "INSERT INTO `student`(user_id, name, email, student_number, section, group_no, student_of, datetime) VALUES ('$origid','$name ','$email','$student_number','$section','$groupnumber', '$facultyName', '$currentDate')";
         $sql_result = mysqli_query($conn, $sql);
 
         if ($sql_result) {

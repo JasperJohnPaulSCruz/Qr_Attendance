@@ -64,51 +64,17 @@ include "connect.php";
     } else {
         // echo "Error executing query: " . mysqli_error($conn);
 
-        for ($i = 1; $i <= 3; $i++) {
 ?>
 
-
-<tr class="bg-white border-b">
-    <div role="status" class="">
-        <td class="max-w-md p-4 space-y-4 divide-y divide-gray-200 rounded shadow animate-pulse md:p-6">
-            <div class="flex items-center justify-between">
-                <div>
-                    <div class="h-2.5 bg-gray-300 rounded-full w-24 mb-2.5"></div>
-                    <div class="w-32 h-2 bg-gray-200 rounded-full"></div>
-                </div>
-            </div>
-        </td>
-        <td class="max-w-md p-4 space-y-4 divide-y divide-gray-200 rounded shadow animate-pulse md:p-6">
-            <div class="flex items-center justify-between">
-                <div>
-                    <div class="h-2.5 bg-gray-300 rounded-full w-24 mb-2.5"></div>
-                    <div class="w-32 h-2 bg-gray-200 rounded-full"></div>
-                </div>
-            </div>
-        </td>
-        <td class="max-w-md p-4 space-y-4 divide-y divide-gray-200 rounded shadow animate-pulse md:p-6">
-            <div class="flex items-center justify-between">
-                
-                <div class="h-2.5 bg-gray-300 rounded-full w-12"></div>
-            </div>
-        </td>
-        <td class="max-w-md p-4 space-y-4 divide-y divide-gray-200 rounded shadow animate-pulse md:p-6">
-            <div class="flex items-center justify-between">
-                
-                <div class="h-2.5 bg-gray-300 rounded-full w-12"></div>
-            </div>
-        </td>
-        <td class="max-w-md p-4 space-y-4 divide-y divide-gray-200 rounded shadow animate-pulse md:p-6">
-            <div class="flex items-center justify-around">
-                <div class="h-2.5 bg-gray-300 rounded-full w-12"></div>
-                <div class="h-2.5 bg-gray-300 rounded-full w-12"></div>
-            </div>
-        </td>
-    </div>
+<tr class="w-full">
+    <td colSpan="5" class=" w-full text-center bg-white py-4">
+        No Student Available.
+    </td>
 </tr>
 
+
 <?php
-        }
+        
     }
 
 ?>
