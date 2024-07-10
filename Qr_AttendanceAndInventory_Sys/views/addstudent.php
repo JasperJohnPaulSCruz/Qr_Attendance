@@ -3,7 +3,6 @@
 
         include "../components/loader.php";
 
-
         if(!isset($_SESSION['loggedin']) && !$_SESSION['loggedin'] == "true")
         {
             header("Location: login.php");
@@ -133,11 +132,18 @@
                                         <select class="w-full p-[10.5px] px-4 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block  outline-none" 
                                         id="section" name="section" required>
                                             <option disabled selected>Year$Section</option>
-                                            <option value="1a" >1A</option>
-                                            <option value="2a">2A</option>
-                                            <option value="2b">2B</option>
-                                            <option value="3a">3A</option>
-                                            <option value="4a">4A</option>
+                                            <?php
+                                            $ys_query = "SELECT * From yr_sec";
+                                            $ys_result = mysqli_query($conn, $ys_query);
+
+                                            if(mysqli_num_rows($ys_result)>0){
+                                                while($ys_row = mysqli_fetch_assoc($ys_result)){
+                                                ?>
+                                                    <option value="<?php echo $ys_row['id']; ?>"><?php echo $ys_row['year_and_sec']; ?></option>
+                                                <?php
+                                                }
+                                            }
+                                            ?>
                                         </select> 
                                         <p class="opacity-0 mb-0.25 px-2 text-[11px] text-red-600 "><span class="font-medium">Oops!</span> Credential is wrong!</p>
                                     </div>
@@ -147,8 +153,18 @@
                                         <select class="w-full p-[10.5px] px-4 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block  outline-none" 
                                         id="group" name="groupnumber" required>
                                             <option disabled selected>Group</option>
-                                            <option value="g1" >G1</option>
-                                            <option value="g2">G2</option>
+                                            <?php
+                                            $ys_query = "SELECT * From group_no";
+                                            $ys_result = mysqli_query($conn, $ys_query);
+
+                                            if(mysqli_num_rows($ys_result)>0){
+                                                while($ys_row = mysqli_fetch_assoc($ys_result)){
+                                                ?>
+                                                    <option value="<?php echo $ys_row['id']; ?>" ><?php echo $ys_row['group_no']; ?></option>
+                                                <?php
+                                                }
+                                            }
+                                            ?>
                                         </select> 
                                         <p class="opacity-0 mb-0.25 px-2 text-[11px] text-red-600 "><span class="font-medium">Oops!</span> Credential is wrong!</p>
                                     </div>
@@ -175,7 +191,7 @@
                     <div class="relative w-full">
                                 <table class=" w-full shadow-md shadow-green-200 rounded-lg text-sm text-left rtl:text-right text-gray-500">
                                     <caption class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white ">
-                                        Student of<span class="text-[20px] rounded py-1 px-2"><?php echo strtoupper($_SESSION['section'])." ".strtoupper($_SESSION['groupnumber']);?></span>
+                                        Student Management</span>
                                     </caption>
                                     <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                                             <th scope="col" class="px-6 py-3">

@@ -64,7 +64,7 @@
 
                         <table class="w-full text-sm text-left rtl:text-right text-gray-500">
                             <caption class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white ">
-                                Student of  <span><?php echo strtoupper($_SESSION['section'])." ".strtoupper($_SESSION['groupnumber']);?></span>
+                                Student Management</span>
                             </caption>
                             <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                                 <tr>

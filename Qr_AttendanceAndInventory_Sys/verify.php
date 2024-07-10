@@ -14,6 +14,7 @@ if (isset($_POST['login'])) {
             if($password === $row['password'] && $email === $row['email']){
 
                 $_SESSION['name'] = $row['name'];
+                $_SESSION['faculty_id'] = $row['id'];
                 $_SESSION['loggedin'] = "true";
 
                 if($row['admin'] === 'Y'){

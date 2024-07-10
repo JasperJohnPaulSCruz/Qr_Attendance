@@ -1,6 +1,5 @@
 <?php
 
-
 include "connect.php";
 include "sendmail.php";
 
@@ -58,10 +57,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 echo "Failed to move uploaded file.";
             }
         }
-        
-        $facultyName = $_SESSION['name'];
 
-        $sql = "INSERT INTO `student`(user_id, name, email, student_number, section, group_no, student_of, datetime) VALUES ('$origid','$name ','$email','$student_number','$section','$groupnumber', '$facultyName', '$currentDate')";
+        $facultyId = $_SESSION['faculty_id'];
+    
+        $sql = "INSERT INTO `student`(user_id, name, email, student_number, yr_sec, group_no, faculty_id, datetime) VALUES ('$origid','$name ','$email','$student_number','$section','$groupnumber', '$facultyId', '$currentDate')";
         $sql_result = mysqli_query($conn, $sql);
 
         if ($sql_result) {
@@ -73,8 +72,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 if(isset($_SESSION['studentExist'])){
                     unset($_SESSION['studentExist']);
                 }
-                // header("Location: students");
-                // exit;
+                header("Location: students");
+                exit;
             }
             
             else if(isset($_POST['addanother'])){
@@ -82,8 +81,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 if(isset($_SESSION['studentExist'])){
                     unset($_SESSION['studentExist']);
                 }
-                // header("Location: addstudent");
-                // exit;
+                header("Location: addstudent");
+                exit;
 
             }
                 

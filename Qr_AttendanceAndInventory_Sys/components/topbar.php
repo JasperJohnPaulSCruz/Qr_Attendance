@@ -6,6 +6,7 @@
   session_start();
 
   include "sidebar.php";
+  include "./connect.php";
 ?>
 
 <nav class="absolute pt-3 w-full border-gray-200  px-[130px]">
@@ -19,18 +20,35 @@
         <div class="flex w-full mr-5 gap-5">
             <!-- dropdown section -->
             <select name="section" id="section" class="cursor-pointer px-5 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 hover:bg-gray-50 w-[180px] py-2">
-                <option >Year&Section</option>
-                <option value="1a" <?php echo $_SESSION['section'] == "1a" ? 'selected' : '';?> >1A</option>
-                <option value="2a" <?php echo $_SESSION['section'] == "2a" ? 'selected' : '';?> >2A</option>
-                <option value="2b" <?php echo $_SESSION['section'] == "2b" ? 'selected' : '';?> >2B</option>
-                <option value="3a" <?php echo $_SESSION['section'] == "3a" ? 'selected' : '';?> >3A</option>
-                <option value="4a" <?php echo $_SESSION['section'] == "4a" ? 'selected' : '';?> >4A</option>
+                <option selected disabled>Year&Section</option>
+                <?php
+                  $ys_query = "SELECT * From yr_sec";
+                  $ys_result = mysqli_query($conn, $ys_query);
+
+                  if(mysqli_num_rows($ys_result)>0){
+                    while($ys_row = mysqli_fetch_assoc($ys_result)){
+                      ?>
+                        <option value="<?php echo $ys_row['id']; ?>" <?php echo $_SESSION['section'] == $ys_row['id'] ? 'selected' : '';?> ><?php echo $ys_row['year_and_sec']; ?></option>
+                      <?php
+                    }
+                  }
+                ?>
             </select>
              <!-- dropdown group -->
             <select name="groupnumber" id="groupnumber" class="cursor-pointer px-5 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 hover:bg-gray-50 w-[130px] py-2">
-                <option>Group</option>
-                <option value="g1" <?php echo $_SESSION['groupnumber'] == "g1" ? 'selected' : '';?> >G1</option>
-                <option value="g2" <?php echo $_SESSION['groupnumber'] == "g2" ? 'selected' : '';?> >G2</option>
+                <option selected disabled>Group</option>
+                <?php
+                  $gn_query = "SELECT * From group_no";
+                  $gn_result = mysqli_query($conn, $gn_query);
+
+                  if(mysqli_num_rows($gn_result)>0){
+                    while($gn_row = mysqli_fetch_assoc($gn_result)){
+                      ?>
+                        <option value="<?php echo $gn_row['id']; ?>" <?php echo $_SESSION['groupnumber'] == $gn_row['id'] ? 'selected' : '';?> ><?php echo $gn_row['group_number']; ?></option>
+                      <?php
+                    }
+                  }
+                ?>
             </select>
 
         </div>

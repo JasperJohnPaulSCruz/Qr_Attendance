@@ -40,7 +40,7 @@ include "connect.php";
 ?>
 
 <tr class="bg-white border-b ">
-    <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+    <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap">
         <img class="w-10 h-10 rounded-full" src="<?php echo $imagePath;?>" alt="Jese image">
             <div class="ps-3">
                 <div class="text-base font-semibold"><?php echo ucwords($s_row['name'])?></div>

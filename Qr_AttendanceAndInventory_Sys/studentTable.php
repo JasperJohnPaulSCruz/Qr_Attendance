@@ -6,7 +6,7 @@ include "connect.php";
     $section = $_SESSION['section'];
     $group_no = $_SESSION['groupnumber'];
 
-    $query = "SELECT * from student where section = '$section' and group_no = '$group_no'";
+    $query = "SELECT * from student where yr_sec = '$section' and group_no = '$group_no'";
     $result = mysqli_query($conn, $query);
 
     if($result && mysqli_num_rows($result) > 0){
@@ -28,10 +28,27 @@ include "connect.php";
             }else{
             }
 
+            $yearAndSec = "";
+            $y_q="SELECT * from yr_sec LEFT JOIN student ON yr_sec.id = student.yr_sec LIMIT 1";
+            $y_r=mysqli_query($conn, $y_q);
+            if(mysqli_num_rows($y_r)>0){
+                $y_row = mysqli_fetch_assoc($y_r);
+                $yearAndSec = $y_row['year_and_sec'];
+            }
+
+            $groupNo = "";
+            $gn_q="SELECT * from group_no LEFT JOIN student ON group_no.id = student.group_no LIMIT 1";
+            $gn_r=mysqli_query($conn, $gn_q);
+            if(mysqli_num_rows($gn_r)>0){
+                $gn_row = mysqli_fetch_assoc($gn_r);
+                echo $groupNo = $gn_row['group_number'];
+            }
+
+
 ?>
 
 <tr class="bg-white border-b ">
-    <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+    <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap">
         <img class="w-10 h-10 rounded-full" src="<?php echo $imagePath;?>" alt="Jese image">
             <div class="ps-3">
                 <div class="text-base font-semibold"><?php echo ucwords($row['name'])?></div>
@@ -42,10 +59,10 @@ include "connect.php";
         <?php echo $row['student_number'];?>
     </td>
     <td class="px-6 py-4">
-        <?php echo strtoupper($row['section']);?>
+        <?php echo strtoupper($yearAndSec);?>
     </td>
     <td class="px-6 py-4">
-        <?php echo strtoupper($row['group_no']);?>
+        <?php echo $groupNo;?>
     </td>
     <td class="text-center">
         <button type="button" class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">

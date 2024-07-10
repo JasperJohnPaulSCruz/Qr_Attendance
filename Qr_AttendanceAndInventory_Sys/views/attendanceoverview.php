@@ -83,12 +83,6 @@
                             <input type="date" class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5">
                         </div>
 
-                        <a 
-                        type="button"
-                        href="addstudent" 
-                        class="w-40 text-nowrap shadow-md text-white text-center bg-teal-700 hover:bg-teal-800 focus:ring-4 focus:ring-teal-300 font-medium rounded-lg text-sm px-5 py-2.5   focus:outline-none ">
-                        Add Student
-                        </a>
                     </div>
 
                     
