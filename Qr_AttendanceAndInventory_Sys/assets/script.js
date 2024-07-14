@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() { // For drag and drop 
 //   var lname = document.forms["form"]["lname"].value;
 //   var idnumber = document.forms["form"]["idnumber"].value;
 
-//   var lettersOnly = /^[A-Za-z]+$/;
+//   
 //   var numbersOnly = /^[0-9]+$/;
 
 //   console.log(idnumber);
@@ -80,6 +80,8 @@ document.addEventListener('DOMContentLoaded', function() { // For drag and drop 
   
 //   return true;
 // }
+
+var lettersOnly =/^[a-zA-Z\s]*$/;
 
 // Add event listeners to input fields for real-time validation
 document.addEventListener('DOMContentLoaded', function() {
@@ -113,7 +115,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Validation functions
 function validateFirstName(fname) {
-  var lettersOnly = /^[A-Za-z]+$/;
   var fnameElement = document.querySelector('#fname');
   var fnameErrorElement = document.querySelector('#firstname p');
 
@@ -129,7 +130,6 @@ function validateFirstName(fname) {
 }
 
 function validateMiddleName(mname) {
-  var lettersOnly = /^[A-Za-z]+$/;
   var fnameElement = document.querySelector('#mname');
   var fnameErrorElement = document.querySelector('#middlename p');
 
@@ -145,7 +145,6 @@ function validateMiddleName(mname) {
 }
 
 function validateLastName(lname) {
-  var lettersOnly = /^[A-Za-z]+$/;
   var fnameElement = document.querySelector('#lname');
   var fnameErrorElement = document.querySelector('#lastname p');
 
@@ -176,6 +175,48 @@ function validateIDNumber(idnumber) {
   }
 }
 
+function showPassword(){ // For show password
+  var pwdInput = document.getElementById('password');
+  var close = document.getElementById('eye_1');
+  var open = document.getElementById('eye_2');
+
+  if(pwdInput.type === "password"){
+      close.style.display = "none";
+      open.style.display = "block";
+      pwdInput.type = "text";
+      console.log(pwdInput.type);
+      console.log(close.style.display);
+
+  }else{
+      open.style.display = "none";
+      close.style.display = "block";
+      pwdInput.type = "password";
+      console.log(pwdInput.type);
+      console.log(close.style.display);
+  }
+
+}
+
+
+function updateThis(id){ 
+
+}
+
+function deleteThis(id){ 
+  document.getElementById('yes').href = "./delete.php?id="+id;
+}
+
+function updateThisItem(id){ 
+
+}
+
+function deleteThisItem(id){ 
+  document.getElementById('yes').href = "./delete.php?itemid="+id;
+}
+
+function zoomImage(path){ 
+  document.getElementById('imageqr').src = path;
+}
 
 
   

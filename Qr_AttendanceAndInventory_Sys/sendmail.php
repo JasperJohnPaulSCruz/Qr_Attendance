@@ -72,6 +72,56 @@ function sendMail($email, $hashedid, $name){
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
 }
+
+//Function to send creadentials of faculty
+function sendCredentials($email, $password, $name){
+
+    //Create an instance; passing `true` enables exceptions
+    $mail = new PHPMailer(true);
+
+    try {
+        //Server settings
+
+        // $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      
+        $mail->isSMTP();                                            
+        $mail->Host       = MAILHOST;                    
+        $mail->SMTPAuth   = true;                                  
+        $mail->Username   = USERNAME;                   
+        $mail->Password   = PASSWORD; 
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+        $mail->Port       = 465; 
+
+        //Recipients
+        $mail->setFrom(SEND_FROM, SEND_FROM_NAME);
+        $mail->addAddress($email, $name);   
+        $mail->addReplyTo(REPLY_TO, REPLY_TO_NAME);
+        // $mail->addCC('cc@example.com');
+        // $mail->addBCC('bcc@example.com');
+
+        //Attachments
+        // $mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
+        // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
+
+        //Content
+        $mail->isHTML(true);                                  //Set email format to HTML
+        $mail->Subject = 'QR For Your Attendance';
+        $mail->Body    = '
+                          <p style="text-align:center; font-size:20px; font-weight:bold;">BulSU Attendance Management System</p>
+                          <p style="text-align:center;">This is your <strong>Credentials</strong> to login to the attendance management system.<br>Please update your credentials. </b></p>
+                          <p style="text-align:center; ">
+                            Email: <span style="font-weight:bold;">'.$email.'</span><br>
+                            Password: <span style="font-weight:bold;">'.$password.'</span>
+                          </p>
+                          <p style="text-align:center;"><strong >Thank you!</strong></p>
+                         ';
+        // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+        $mail->send();
+        echo 'Message has been sent';
+    } catch (Exception $e) {
+        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    }
+}
     
 
 

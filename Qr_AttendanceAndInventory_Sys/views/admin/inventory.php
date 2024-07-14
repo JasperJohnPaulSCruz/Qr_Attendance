@@ -7,6 +7,9 @@
             exit;
         }
 
+        include "./totals.php";
+        include "./connect.php";
+
     ?>
 
     <!DOCTYPE html>
@@ -20,11 +23,14 @@
         <script src="https://cdn.tailwindcss.com"></script>
         <link rel="stylesheet" href="assets/style.css">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+        <script src="./assets/script.js"></script>
+
     </head>
     <body>
-
         <?php include "components/topbar.php"; ?>
-
+        <?php include "./components/modals/confirmDeleteItem.php";?>
+        <?php include "./components/modals/updateItemModal.php";?>
+        <?php include "./components/modals/zoomImage.php";?>
 
         <div class="flex h-screen justify-around font-poppins pt-[130px] bg-green-50">
             <div class="flex flex-col w-full bg-opacity-75 pl-[200px] pr-[100px] pb-[50px]">
@@ -32,7 +38,7 @@
                     <a id="showListOfItems" href="#" class="font-medium mr-5">
                         <div id="listbutton" class="w-full h-full bg-white rounded-t-lg shadow-md shadow-green-200 px-5 py-5 cursor-pointer flex ">
                         <div class="flex flex-col">
-                            <span class="text-[30px]">0</span>
+                            <span class="text-[30px]"><?php echo allItms($conn);?></span>
                             List of Items
                         </div>
                         <svg class="text-green-700 ml-5" xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><g fill="none" fill-rule="evenodd"><path d="M24 0v24H0V0zM12.594 23.258l-.012.002l-.071.035l-.02.004l-.014-.004l-.071-.036q-.016-.004-.024.006l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.016-.018m.264-.113l-.014.002l-.184.093l-.01.01l-.003.011l.018.43l.005.012l.008.008l.201.092q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.003-.011l.018-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="M4 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm14 0H6v16h12zm-6.452 2.763a1 1 0 0 1 0 1.414L9.603 10.12a1.25 1.25 0 0 1-1.767 0l-.884-.884a1 1 0 1 1 1.414-1.414l.354.354l1.414-1.414a1 1 0 0 1 1.414 0ZM13 9a1 1 0 0 1 1-1h2a1 1 0 1 1 0 2h-2a1 1 0 0 1-1-1m-6 4.5A1.5 1.5 0 0 1 8.5 12h2a1.5 1.5 0 0 1 1.5 1.5v2a1.5 1.5 0 0 1-1.5 1.5h-2A1.5 1.5 0 0 1 7 15.5zm2 .5v1h1v-1zm4 .5a1 1 0 0 1 1-1h2a1 1 0 1 1 0 2h-2a1 1 0 0 1-1-1"/></g></svg>

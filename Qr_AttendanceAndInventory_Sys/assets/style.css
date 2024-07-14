@@ -19,3 +19,45 @@
 .font-roboto{
     font-family: 'Roboto', sans-serif;
 }
+
+/* button style */
+  .button-click{
+    position:relative;
+    display:inline-block;
+    background-color:rgb(250, 204, 21);
+    border-radius:1em;
+    padding:1em 0;
+
+    
+  }
+  button.button-click{
+    background-color:rgb(250, 204, 21);
+    border-radius:5px;
+    padding:.5em 0;
+    transform-style: preserve-3d;
+  }
+  
+  button.button-click::before{
+    position: absolute;
+    content:'';
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    border-radius:inherit;
+    background: rgb(161, 98, 7);
+    transform: translate3d(0, 0.50em, -1em);
+  }
+  
+  button.button-click:active{
+    transform: translate(0em, 0.50em);
+  }
+  
+  button.button-click:active::before {
+    transform: translate3d(0, 0, -1em);
+  }
+
+  select option:disabled{
+    /* color:rgb(203, 203, 203); */
+    color: blue;
+  }

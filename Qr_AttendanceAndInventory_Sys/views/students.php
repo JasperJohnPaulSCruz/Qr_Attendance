@@ -80,6 +80,9 @@
                                     <th scope="col" class="px-6 py-3">
                                         Group
                                     </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Date
+                                    </th>
                                     <th scope="col" class="text-center px-6 py-3">
                                         Action
                                     </th>

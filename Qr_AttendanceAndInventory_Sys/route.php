@@ -40,6 +40,13 @@ else if($router == 'inventoryadmin'){
     exit;
 
 }
+
+else if($router == 'additem'){
+    include 'views/admin/additem.php';
+    exit;
+
+}
+
 else{
     include '404.php';
     exit;

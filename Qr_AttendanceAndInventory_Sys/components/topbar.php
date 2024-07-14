@@ -102,6 +102,9 @@ else if(routeName === "attendanceoverview"){
 else if(routeName === "inventoryadmin"){
   routeName = 'Inventory Management';
 } 
+else if(routeName === "additem"){
+  routeName = 'Add Item';
+} 
 
   let titleName = upperInitial(routeName);
   var titlePage = document.getElementById('pathName');

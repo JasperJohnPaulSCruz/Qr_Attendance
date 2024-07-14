@@ -2,38 +2,72 @@
 //
 include "connect.php";
 
-$total_student = 0;
-$present = 0;
-$late = 0;
-$absent = 0;
 
-$section = $_SESSION['section'];
-$group_no = $_SESSION['groupnumber'];
 
-$t_query = "Select * from attendance_log where yr_sec = '$section' and group_no = '$group_no'";
-$t_result = mysqli_query($conn, $t_query);
+function totalStudent($conn){
+    $section = $_SESSION['section'];
+    $group_no = $_SESSION['groupnumber'];
 
-if(mysqli_num_rows($t_result)>0){
-    $total_student = mysqli_num_rows(($t_result));
+    $t_query = "Select * from attendance_log where yr_sec = '$section' and group_no = '$group_no'";
+    $t_result = mysqli_query($conn, $t_query);
+    
+    if(mysqli_num_rows($t_result)>0){
+        return mysqli_num_rows($t_result);
+    }else{
+        return 0;
+    }
 }
 
-$p_query = "Select * from attendance_log where status = 'present' and yr_sec = '$section' and group_no = '$group_no'";
-$p_result = mysqli_query($conn, $p_query);
+function present($conn){
+    $section = $_SESSION['section'];
+    $group_no = $_SESSION['groupnumber'];
+    
+    $p_query = "Select * from attendance_log where status = 'present' and yr_sec = '$section' and group_no = '$group_no'";
+    $p_result = mysqli_query($conn, $p_query);
 
-if(mysqli_num_rows($p_result)>0){
-    $present = mysqli_num_rows(($p_result));
+    if(mysqli_num_rows($p_result)>0){
+        return mysqli_num_rows($p_result);
+    }else{
+        return 0;
+    }
 }
 
-$l_query = "Select * from attendance_log where status = 'late' and yr_sec = '$section' and group_no = '$group_no'";
-$l_result = mysqli_query($conn, $l_query);
-
-if(mysqli_num_rows($l_result)>0){
-    $late = mysqli_num_rows(($l_result));
+function late($conn){
+    $section = $_SESSION['section'];
+    $group_no = $_SESSION['groupnumber'];
+    
+    $l_query = "Select * from attendance_log where status = 'late' and yr_sec = '$section' and group_no = '$group_no'";
+    $l_result = mysqli_query($conn, $l_query);
+    
+    if(mysqli_num_rows($l_result)>0){
+        return mysqli_num_rows($l_result);
+    }else{
+        return 0;
+    }
 }
 
-$a_query = "Select * from attendance_log where status = 'absent' and yr_sec = '$section' and group_no = '$group_no'";
-$a_result = mysqli_query($conn, $a_query);
+function absent($conn){
+    $section = $_SESSION['section'];
+    $group_no = $_SESSION['groupnumber'];
 
-if(mysqli_num_rows($a_result)>0){
-    $absent = mysqli_num_rows(($a_result));
+    $a_query = "Select * from attendance_log where status = 'absent' and yr_sec = '$section' and group_no = '$group_no'";
+    $a_result = mysqli_query($conn, $a_query);
+    
+    if(mysqli_num_rows($a_result)>0){
+        return mysqli_num_rows($a_result);
+    }else{
+        return 0;
+    }
+}
+
+function allItms($conn){
+
+    $query = "SELECT id from items";
+    $result = mysqli_query($conn, $query);
+    
+    if (mysqli_num_rows($result)>0){
+        return mysqli_num_rows($result);
+    }else{
+        return 0;
+    }
 }

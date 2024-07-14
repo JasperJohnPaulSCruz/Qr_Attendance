@@ -6,7 +6,7 @@ include "connect.php";
     $section = $_SESSION['section'];
     $group_no = $_SESSION['groupnumber'];
 
-    $query = "SELECT * from student where yr_sec = '$section' and group_no = '$group_no'";
+    $query = "SELECT * from student where yr_sec = '$section' and group_no = '$group_no' ORDER BY id DESC";
     $result = mysqli_query($conn, $query);
 
     if($result && mysqli_num_rows($result) > 0){
@@ -14,6 +14,8 @@ include "connect.php";
             $user_id = $row['user_id'];
             $name = $row['name'];
             $imagePath = "";
+            $yr_sec = $row['yr_sec'];
+            $group_no = $row['group_no'];
 
             $qavatar = "SELECT * from avatar where user_id = '$user_id' limit 1";
             $qavatar_result = mysqli_query($conn, $qavatar);
@@ -29,7 +31,7 @@ include "connect.php";
             }
 
             $yearAndSec = "";
-            $y_q="SELECT * from yr_sec LEFT JOIN student ON yr_sec.id = student.yr_sec LIMIT 1";
+            $y_q="SELECT * from yr_sec LEFT JOIN student ON yr_sec.id = student.yr_sec where student.yr_sec = $yr_sec LIMIT 1";
             $y_r=mysqli_query($conn, $y_q);
             if(mysqli_num_rows($y_r)>0){
                 $y_row = mysqli_fetch_assoc($y_r);
@@ -37,11 +39,11 @@ include "connect.php";
             }
 
             $groupNo = "";
-            $gn_q="SELECT * from group_no LEFT JOIN student ON group_no.id = student.group_no LIMIT 1";
+            $gn_q="SELECT * from group_no LEFT JOIN student ON group_no.id = student.group_no where student.group_no = $group_no LIMIT 1";
             $gn_r=mysqli_query($conn, $gn_q);
             if(mysqli_num_rows($gn_r)>0){
                 $gn_row = mysqli_fetch_assoc($gn_r);
-                echo $groupNo = $gn_row['group_number'];
+                $groupNo = $gn_row['group_number'];
             }
 
 
@@ -63,6 +65,9 @@ include "connect.php";
     </td>
     <td class="px-6 py-4">
         <?php echo $groupNo;?>
+    </td>
+    <td class="px-6 py-4">
+        <?php echo $row['datetime'];?>
     </td>
     <td class="text-center">
         <button type="button" class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
