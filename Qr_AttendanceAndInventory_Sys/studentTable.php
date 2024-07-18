@@ -89,7 +89,7 @@ include "connect.php";
 ?>
 
 <tr class="w-full">
-    <td colSpan="5" class=" w-full text-center bg-white py-4">
+    <td colSpan="6" class=" w-full text-center bg-white py-4">
         No Student Available.
     </td>
 </tr>

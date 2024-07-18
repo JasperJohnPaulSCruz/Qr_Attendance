@@ -10,7 +10,7 @@
 ?>
 
 <nav class="absolute pt-3 w-full border-gray-200  px-[130px]">
-  <div class=" px-[50px]  bg-white rounded-lg flex items-center justify-between mx-auto shadow-md shadow-green-200">
+  <div class=" px-[50px]  bg-white rounded-lg flex items-center justify-between mx-auto shadow-md shadow-red-200">
     <div class=" w-auto flex justify-center items-center" id="navbar-multi-level">
       <p id="pathName" class="font-extrabold tracking-wide text-gray-900 text-[18px]"></p>
     </div>
@@ -19,7 +19,7 @@
       
         <div class="flex w-full mr-5 gap-5">
             <!-- dropdown section -->
-            <select name="section" id="section" class="cursor-pointer px-5 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 hover:bg-gray-50 w-[180px] py-2">
+            <select name="section" id="section" class="cursor-pointer px-5 border-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 hover:bg-gray-50 w-[180px] py-2">
                 <option selected disabled>Year&Section</option>
                 <?php
                   $ys_query = "SELECT * From yr_sec";
@@ -35,7 +35,7 @@
                 ?>
             </select>
              <!-- dropdown group -->
-            <select name="groupnumber" id="groupnumber" class="cursor-pointer px-5 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 hover:bg-gray-50 w-[130px] py-2">
+            <select name="groupnumber" id="groupnumber" class="cursor-pointer px-5 border-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 hover:bg-gray-50 w-[130px] py-2">
                 <option selected disabled>Group</option>
                 <?php
                   $gn_query = "SELECT * From group_no";

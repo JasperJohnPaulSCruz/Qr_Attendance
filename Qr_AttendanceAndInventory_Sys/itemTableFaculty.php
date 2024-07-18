@@ -41,7 +41,6 @@ include "connect.php";
             }
 
             $imageQR="";
-
             $i_query = "SELECT * from qr_code where item_id = '$itemid' limit 1";
             $i_result = mysqli_query($conn, $i_query);
             if(mysqli_num_rows($i_result)>0){
@@ -49,30 +48,36 @@ include "connect.php";
                 $imageQR = $fetchItem['path'].$fetchItem['name'];
             }
 
+            $imageItem="";
+            $ii_query = "SELECT * from inventory where item_id = '$itemid' limit 1";
+            $ii_result = mysqli_query($conn, $ii_query);
+            if(mysqli_num_rows($ii_result)>0){
+                $fetchItem=mysqli_fetch_assoc($ii_result);
+                $imageItem = $fetchItem['path'].$fetchItem['name'];
+            }
+
 ?>
 
-<tr class="bg-white border-b ">
+<tr class="bg-white border-b hover:bg-green-100 cursor-pointer" >
 
     <td class="px-6 py-4 font-semibold">
         <?php echo $i;?>
     </td>
-    <th scope="row" class="text-gray-900 whitespace-nowrap px-6 py-4">
+    <th scope="row" class="text-gray-900 whitespace-nowrap px-6 py-4" onclick="showItemImage('<?php echo $imageItem;?>')">
         <div class="text-base font-semibold"><?php echo ucwords($row['item_name'])?></div>
     </th>
     <td class="px-6 py-4 text-nowrap">
+        <div class="relative flex items-center w-20 z-20">
+            <input type="number" id="<?php echo $row['id']; ?>" onblur="updateQuantity(<?php echo $row['id']; ?>)" class="quan rounded outline-none border-gray-300 h-11 text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full py-2.5 " placeholder="0"     />
+        </div>
+    </td>
+    <td class="px-6 py-4 ">
+        <img class="cursor-pointer " src="<?php echo $imageQR; ?>" width="50"  alt="QR Code" onclick="zoomImage('<?php echo $imageQR; ?>')" data-modal-target="zoom-modal" data-modal-toggle="zoom-modal">
+    </td>   
+    <td class="px-6 py-4 text-nowrap">
         <?php echo $row['datetime'];?>
     </td>
-    <td class="px-6 py-4 hover:bg-gray-100">
-        <img class="cursor-pointer " src="<?php echo $imageQR; ?>" width="50"  alt="QR Code" onclick="zoomImage('<?php echo $imageQR; ?>')" data-modal-target="zoom-modal" data-modal-toggle="zoom-modal">
-    </td>
-    <td class="flex-nowrap flex pt-6">
-        <button id="<?php echo $row['id'];?>" onclick="updateThisItem(this.id)" data-modal-target="crud-modal" data-modal-toggle="crud-modal" type="button" class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg p-2 text-center me-2 mb-2">
-        <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><path fill="currentColor" d="m12.9 6.855l4.242 4.242l-9.9 9.9H3v-4.243zm1.414-1.415l2.121-2.121a1 1 0 0 1 1.414 0l2.829 2.828a1 1 0 0 1 0 1.415l-2.122 2.121z"/></svg>
-        </button>
-        <button id="<?php echo $row['id'];?>" onclick="deleteThisItem(this.id)" data-modal-target="popup-modal" data-modal-toggle="popup-modal" type="button" class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg  p-2 text-center me-2 mb-2">
-        <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><path fill="currentColor" d="M7 21q-.825 0-1.412-.587T5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.587 1.413T17 21zm2-4h2V8H9zm4 0h2V8h-2z"/></svg>
-        </button>
-    </td>
+    
                                             
 </tr>
 
@@ -100,5 +105,19 @@ include "connect.php";
     
 
 ?>
+
+<script>
+    // var element = document.querySelector(".quan");
+    // element.addEventListener("blur", function() {
+    //     const id = element.id;
+    //     console.log(id);
+    //     // window.location = 'login.php?id='.id;
+    // }); 
+
+    function updateQuantity(id){
+        let quantity = document.getElementById(id);
+        window.location.href = 'login.php?id='+id+'&quantity='+quantity.value;
+    }
+</script>
 
 

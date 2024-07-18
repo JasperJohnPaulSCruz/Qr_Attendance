@@ -56,8 +56,8 @@
 
         <?php include "components/topbar.php"; ?>
 
-        <div class="flex h-screen justify-around font-poppins pt-[100px] bg-green-50">
-            <div class="flex h-full w-full bg-opacity-75">
+        <div class="flex h-screen font-poppins pt-[100px] bg-auto">
+            <div class="flex h-full w-full bg-opacity-75 pr-[5%]">
 
                 <div class="mr-[30px] w-full pl-[10%] flex gap-5">   
 
@@ -92,42 +92,12 @@
                                         </div> 
                                     </div>
 
-                                    <div class="w-full">
-                                        <label for="section" class="tracking-wide block mb-1 text-[11px] text-gray-900 uppercase font-bold text-white">Faculty</label>
-                                        <select class="w-full p-[10.5px] px-4 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block  outline-none" 
-                                        id="section" name="facultyId" required>
-                                            <option disabled selected>Choose Faculty</option>
-                                            <?php
-                                            $ys_query = "SELECT id, name From user_acount";
-                                            $ys_result = mysqli_query($conn, $ys_query);
-
-                                            if(mysqli_num_rows($ys_result)>0){
-                                                while($ys_row = mysqli_fetch_assoc($ys_result)){
-                                                ?>
-                                                    <option value="<?php echo $ys_row['id']; ?>"><?php echo $ys_row['name']; ?></option>
-                                                <?php
-                                                }
-                                            }
-                                            ?>
-                                        </select> 
-                                        <p class="opacity-0 mb-0.25 px-2 text-[11px] text-red-600 "><span class="font-medium">Oops!</span> Credential is wrong!</p>
-                                    </div>
-
                                     <label for="name" class="text-white tracking-wide block mb-1 text-[11px] text-gray-900 uppercase font-bold">Item Name</label>
                                     <div id="name" class="w-full">
                                         <input type="text" class="w-full border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block p-2.5 outline-0 placeholder:tracking-wide" 
                                         name="name" id="item" placeholder="Enter Item Name" required>
                                         <p class="opacity-0 mb-0.25 px-2 text-[11px] text-red-600 "><span class="font-medium">Oops!</span> Credential is wrong!</p>
                                     </div>
-
-                                    <label for="itemquantity" class="text-white tracking-wide block mb-1 text-[11px] text-gray-900 uppercase font-bold">Quantity</label>
-                                    <div id="itemquantity" class="w-full">
-                                        <input type="number" class=" w-full border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block p-2.5 outline-0 placeholder:tracking-wide" 
-                                        name="quantity" id="quantity" placeholder="Enter How many Item" required>
-                                        <p class="opacity-0 mb-0.25 px-2 text-[11px] text-red-600 "><span class="font-medium">Oops!</span> Credential is wrong!</p>
-                                    </div>
-
-                                    
 
                                 </div>
                                 
@@ -188,12 +158,6 @@
                                         </th>
                                         <th scope="col" class="px-6 py-3">
                                             Item Name
-                                        </th>
-                                        <th scope="col" class="px-6 py-3">
-                                            Faculty Name
-                                        </th>
-                                        <th scope="col" class="px-6 py-3">
-                                            Quantity
                                         </th>
                                         <th scope="col" class="px-6 py-3">
                                             Date

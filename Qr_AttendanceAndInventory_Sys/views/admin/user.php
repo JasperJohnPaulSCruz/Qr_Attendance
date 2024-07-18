@@ -54,10 +54,67 @@
 
         <?php include "components/topbar.php"; ?>
 
-        <div class="flex h-screen justify-around font-poppins pt-[100px] bg-green-50">
-            <div class="flex h-full w-full bg-opacity-75">
+        <div class="flex h-screen justify-around font-poppins pt-[100px] bg-red-50">
+            <div class="flex h-full w-full bg-opacity-75 pr-[10%]">
 
                 <div class="mr-[30px] w-full pl-[200px] flex gap-5">   
+
+                <!-- The whole card -->
+                    <div class=" w-[500px] ">
+
+                        <form action="./add.php" method="POST" onsubmit="return validateForm()"  id="form">
+                            <div class="w-full relative gap-5 flex flex-col bg-white p-7 pb-[80px] rounded-lg shadow-md shadow-red-200">
+                                
+                                <p class=" text-lg font-semibold text-left  rtl:text-right text-gray-900  border-b-[1px]">
+                                Add Faculty</span>
+                                </p>
+
+                                <div id="allinputs" class="w-full">
+                                    <label for="firstname" class=" tracking-wide block mb-1 text-[11px] text-gray-900 uppercase font-bold">First Name</label>
+                                    <div id="firstname" class="w-full">
+                                        <input type="text" class="w-full border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block p-2.5 outline-0 placeholder:tracking-wide" 
+                                        name="fname" id="fname" placeholder="First Name" required>
+                                        <p class="opacity-0 mb-0.25 px-2 text-[11px] text-red-600 "><span class="font-medium">Oops!</span> Credential is wrong!</p>
+                                    </div>
+
+                                    <label for="lastname" class=" tracking-wide block mb-1 text-[11px] text-gray-900 uppercase font-bold">Last Name</label>
+                                    <div id="lastname" class="w-full">
+                                        <input type="text" class=" w-full border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block p-2.5 outline-0 placeholder:tracking-wide" 
+                                        name="lname" id="lname" placeholder="Last Name" required>
+                                        <p class="opacity-0 mb-0.25 px-2 text-[11px] text-red-600 "><span class="font-medium">Oops!</span> Credential is wrong!</p>
+                                    </div>
+
+                                    <div  class="w-full">
+                                        <label for="email" class=" tracking-wide block mb-1 text-[11px] text-gray-900 uppercase font-bold">Email</label>
+                                        <input type="email" class="w-full border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block p-2.5 outline-none placeholder:tracking-wide" 
+                                        name="email" id="email" placeholder="Email Address" required>
+                                        <p class="opacity-0 mb-0.25 px-2 text-[11px] text-red-600 "><span class="font-medium">Oops!</span> Credential is wrong!</p>
+                                    </div>
+                                        
+                                    <div class="w-full">
+                                        <label for="password" class=" tracking-wide block mb-1 text-[11px] text-gray-900 uppercase font-bold">Temporary Password</label>
+                                        <div class="flex justify-end relative">
+                                            <input type="password" class="border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-0 placeholder:tracking-wide" name="password" id="password" placeholder="Enter your Password">
+                                            <!-- show password -->
+                                            <svg onclick="showPassword()" id="eye_1" class=" absolute opacity-30 top-2.5 right-2 cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><path fill="currentColor" d="M2 5.27L3.28 4L20 20.72L18.73 22l-3.08-3.08c-1.15.38-2.37.58-3.65.58c-5 0-9.27-3.11-11-7.5c.69-1.76 1.79-3.31 3.19-4.54zM12 9a3 3 0 0 1 3 3a3 3 0 0 1-.17 1L11 9.17A3 3 0 0 1 12 9m0-4.5c5 0 9.27 3.11 11 7.5a11.8 11.8 0 0 1-4 5.19l-1.42-1.43A9.86 9.86 0 0 0 20.82 12A9.82 9.82 0 0 0 12 6.5c-1.09 0-2.16.18-3.16.5L7.3 5.47c1.44-.62 3.03-.97 4.7-.97M3.18 12A9.82 9.82 0 0 0 12 17.5c.69 0 1.37-.07 2-.21L11.72 15A3.064 3.064 0 0 1 9 12.28L5.6 8.87c-.99.85-1.82 1.91-2.42 3.13"/></svg>
+                                            <svg onclick="showPassword()" id="eye_2" style="display:none;" class=" absolute opacity-30 top-2.5 right-2 cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><path fill="currentColor" d="M12 9a3 3 0 0 1 3 3a3 3 0 0 1-3 3a3 3 0 0 1-3-3a3 3 0 0 1 3-3m0-4.5c5 0 9.27 3.11 11 7.5c-1.73 4.39-6 7.5-11 7.5S2.73 16.39 1 12c1.73-4.39 6-7.5 11-7.5M3.18 12a9.821 9.821 0 0 0 17.64 0a9.821 9.821 0 0 0-17.64 0"/></svg>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                
+
+                                <div class="absolute right-7 bottom-8 flex items-center gap-2 ">
+                                    <button type="submit" name="adduser" class="button-click text-gray-100 font-medium flex justify-evenly items-center w-[100px] ">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M20 14h-6v6h-4v-6H4v-4h6V4h4v6h6z"/></svg>
+                                        Add
+                                    </button>
+                                </div>
+                            </div>      
+                        </form>    
+
+                    </div>
+                    <!-- End of The whole card -->
 
                     <div class="w-full">
                         <div class=" w-full mb-5 flex gap-5">
@@ -73,9 +130,9 @@
                             </div>
                         </div>
 
-                        <div class="relative overflow-x-auto shadow-md shadow-green-200 rounded-lg w-full">
+                        <div class="relative overflow-x-auto shadow-md shadow-red-200 rounded-lg w-full">
 
-                            <div id="alert-3" class="<?php if(isset($_SESSION['notifChange'])){ echo "flex";}else{echo "hidden";}?> absolute top-20 right-10 z-50 items-center p-4 mb-4 text-green-800 rounded-lg bg-green-50" role="alert">
+                            <div id="alert-3" class="<?php if(isset($_SESSION['notifChange'])){ echo "flex";}else{echo "hidden";}?> absolute top-20 right-10 z-50 items-center p-4 mb-4 text-red-800 rounded-lg bg-red-50" role="alert">
                                 <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                     <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
                                 </svg>
@@ -84,7 +141,7 @@
                                     <?php if(isset($_SESSION['notifChange'])){ echo $_SESSION['notifChange'];}?>
                                 </div>
 
-                                <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-green-50 text-green-500 rounded-lg focus:ring-2 focus:ring-green-400 p-1.5 inline-flex items-center justify-center h-8 w-8" 
+                                <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-red-50 text-red-500 rounded-lg focus:ring-2 focus:ring-red-400 p-1.5 inline-flex items-center justify-center h-8 w-8" 
                                 data-dismiss-target="#alert-3" aria-label="Close">
                                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
@@ -116,62 +173,7 @@
                         </div>
                     </div>
 
-                    <!-- The whole card -->
-                    <div class=" w-[500px] ">
-
-                        <form action="./add.php" method="POST" onsubmit="return validateForm()"  id="form">
-                            <div class="w-full relative gap-5 flex flex-col bg-teal-800 p-7 pb-[80px] rounded-lg shadow-md shadow-green-200">
-                                
-                                <p class=" text-lg font-semibold text-left text-white rtl:text-right text-gray-900  border-b-[1px]">
-                                Add Faculty</span>
-                                </p>
-
-                                <div id="allinputs" class="w-full">
-                                    <label for="firstname" class="text-white tracking-wide block mb-1 text-[11px] text-gray-900 uppercase font-bold">First Name</label>
-                                    <div id="firstname" class="w-full">
-                                        <input type="text" class="w-full border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block p-2.5 outline-0 placeholder:tracking-wide" 
-                                        name="fname" id="fname" placeholder="First Name" required>
-                                        <p class="opacity-0 mb-0.25 px-2 text-[11px] text-red-600 "><span class="font-medium">Oops!</span> Credential is wrong!</p>
-                                    </div>
-
-                                    <label for="lastname" class="text-white tracking-wide block mb-1 text-[11px] text-gray-900 uppercase font-bold">Last Name</label>
-                                    <div id="lastname" class="w-full">
-                                        <input type="text" class=" w-full border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block p-2.5 outline-0 placeholder:tracking-wide" 
-                                        name="lname" id="lname" placeholder="Last Name" required>
-                                        <p class="opacity-0 mb-0.25 px-2 text-[11px] text-red-600 "><span class="font-medium">Oops!</span> Credential is wrong!</p>
-                                    </div>
-
-                                    <div  class="w-full">
-                                        <label for="email" class="text-white tracking-wide block mb-1 text-[11px] text-gray-900 uppercase font-bold">Email</label>
-                                        <input type="email" class="w-full border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block p-2.5 outline-none placeholder:tracking-wide" 
-                                        name="email" id="email" placeholder="Email Address" required>
-                                        <p class="opacity-0 mb-0.25 px-2 text-[11px] text-red-600 "><span class="font-medium">Oops!</span> Credential is wrong!</p>
-                                    </div>
-                                        
-                                    <div class="w-full">
-                                        <label for="password" class="text-white tracking-wide block mb-1 text-[11px] text-gray-900 uppercase font-bold">Temporary Password</label>
-                                        <div class="flex justify-end relative">
-                                            <input type="password" class="border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-0 placeholder:tracking-wide" name="password" id="password" placeholder="Enter your Password">
-                                            <!-- show password -->
-                                            <svg onclick="showPassword()" id="eye_1" class=" absolute opacity-30 top-2.5 right-2 cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><path fill="currentColor" d="M2 5.27L3.28 4L20 20.72L18.73 22l-3.08-3.08c-1.15.38-2.37.58-3.65.58c-5 0-9.27-3.11-11-7.5c.69-1.76 1.79-3.31 3.19-4.54zM12 9a3 3 0 0 1 3 3a3 3 0 0 1-.17 1L11 9.17A3 3 0 0 1 12 9m0-4.5c5 0 9.27 3.11 11 7.5a11.8 11.8 0 0 1-4 5.19l-1.42-1.43A9.86 9.86 0 0 0 20.82 12A9.82 9.82 0 0 0 12 6.5c-1.09 0-2.16.18-3.16.5L7.3 5.47c1.44-.62 3.03-.97 4.7-.97M3.18 12A9.82 9.82 0 0 0 12 17.5c.69 0 1.37-.07 2-.21L11.72 15A3.064 3.064 0 0 1 9 12.28L5.6 8.87c-.99.85-1.82 1.91-2.42 3.13"/></svg>
-                                            <svg onclick="showPassword()" id="eye_2" style="display:none;" class=" absolute opacity-30 top-2.5 right-2 cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><path fill="currentColor" d="M12 9a3 3 0 0 1 3 3a3 3 0 0 1-3 3a3 3 0 0 1-3-3a3 3 0 0 1 3-3m0-4.5c5 0 9.27 3.11 11 7.5c-1.73 4.39-6 7.5-11 7.5S2.73 16.39 1 12c1.73-4.39 6-7.5 11-7.5M3.18 12a9.821 9.821 0 0 0 17.64 0a9.821 9.821 0 0 0-17.64 0"/></svg>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                
-
-                                <div class="absolute right-7 bottom-8 flex items-center gap-2 ">
-                                    <button type="submit" name="adduser" class="button-click text-teal-900 font-medium flex justify-evenly items-center w-[100px] ">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M20 14h-6v6h-4v-6H4v-4h6V4h4v6h6z"/></svg>
-                                        Add
-                                    </button>
-                                </div>
-                            </div>      
-                        </form>    
-
-                    </div>
-                    <!-- End of The whole card -->
+                    
                     
                 </div>     
 

@@ -180,7 +180,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $quantity = $_POST['quantity'];
         $facultyId = $_POST['facultyId'];
 
-        $sql = "INSERT INTO `items`(item_id, faculty_id, item_name, quantity, datetime, modified) VALUES ('$origid','$facultyId','$name ','$quantity','$currentDate','$currentDate')";
+        $sql = "INSERT INTO `items`(item_id, item_name, datetime, modified) VALUES ('$origid','$name ','$currentDate','$currentDate')";
         $sql_result = mysqli_query($conn, $sql);
 
         if ($sql_result) {
@@ -200,7 +200,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                    unset($_SESSION['userExist']);
                 }
     
-                header("Location: additem");
+                header("Location: inventoryadmin");
                 exit;
             }
                     

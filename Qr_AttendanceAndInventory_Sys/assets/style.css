@@ -24,14 +24,14 @@
   .button-click{
     position:relative;
     display:inline-block;
-    background-color:rgb(250, 204, 21);
+    background-color:rgb(168, 52, 52);
     border-radius:1em;
     padding:1em 0;
 
     
   }
   button.button-click{
-    background-color:rgb(250, 204, 21);
+    background-color:rgb(168, 52, 52);
     border-radius:5px;
     padding:.5em 0;
     transform-style: preserve-3d;
@@ -45,7 +45,7 @@
     top:0;
     bottom:0;
     border-radius:inherit;
-    background: rgb(161, 98, 7);
+    background: rgb(123, 6, 6);
     transform: translate3d(0, 0.50em, -1em);
   }
   

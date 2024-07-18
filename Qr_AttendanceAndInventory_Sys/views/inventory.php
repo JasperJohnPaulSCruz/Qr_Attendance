@@ -20,19 +20,20 @@
         <script src="https://cdn.tailwindcss.com"></script>
         <link rel="stylesheet" href="assets/style.css">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+        <script src="assets/script.js"></script>
     </head>
     <body>
 
         <?php include "components/topbar.php"; ?>
+        <?php include "components/modals/zoomImage.php";?>
 
 
-        <div class="flex h-screen justify-around font-poppins pt-[100px] bg-green-50">
+        <div class="flex h-screen justify-around font-poppins pt-[100px] bg-red-50">
             <div class="flex justify-center h-full w-full bg-opacity-75 pl-[200px] pr-[100px] gap-5">
 
                 <div class="w-[500px] ">
-                    <div class="bg-white shadow-md shadow-green-200 rounded-lg p-5">
-                        <img class="h-auto max-w-normal rounded-lg" src="./assets/img/defaultImage.png" alt="image description">
-                        <p class="mt-5 font-normal"><span class="font-medium">Name of Item:</span> Macbook pro</p>
+                    <div class="bg-white shadow-md shadow-red-200 rounded-lg p-5">
+                        <img id="imageItem" class="h-auto max-w-normal rounded-lg" src="./assets/img/defaultImage.png" alt="image description">
                     </div>
                 </div>
 
@@ -54,16 +55,17 @@
 
                     
 
-                    <div class="relative overflow-x-auto">
+                    <div class="relative overflow-x-auto shadow-md shadow-red-200">
+                        
                         <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+                            <caption class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white ">
+                                User/Faculty Management</span>
+                            </caption>
                         
                             <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                                 <tr>
                                     <th scope="col" class="px-6 py-3">
                                         No
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Faculty Name
                                     </th>
                                     <th scope="col" class="px-6 py-3">
                                         Item Name
@@ -80,7 +82,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php include "./itemTable.php"; ?>
+                                <?php include "./itemTableFaculty.php"; ?>
                             </tbody>
                         </table>
                     </div>  

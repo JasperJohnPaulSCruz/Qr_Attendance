@@ -218,5 +218,9 @@ function zoomImage(path){
   document.getElementById('imageqr').src = path;
 }
 
+function showItemImage(path){ 
+  document.getElementById('imageItem').src = path;
+}
+
 
   

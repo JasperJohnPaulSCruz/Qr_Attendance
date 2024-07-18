@@ -26,7 +26,7 @@
         <?php include "components/topbar.php"; ?>
 
 
-        <div class="flex h-screen justify-around font-poppins pt-[100px] bg-green-50">
+        <div class="flex h-screen justify-around font-poppins pt-[100px] bg-red-50">
             <div class="flex justify-center h-full w-full bg-opacity-75">
 
                 <div class="mr-[30px] w-full px-[200px]">   
@@ -53,14 +53,14 @@
                         <a 
                         type="button"
                         href="addstudent" 
-                        class="w-40 text-nowrap shadow-md text-white text-center bg-teal-700 hover:bg-teal-800 focus:ring-4 focus:ring-teal-300 font-medium rounded-lg text-sm px-5 py-2.5   focus:outline-none ">
+                        class="w-40 text-nowrap shadow-md text-white text-center bg-red-800 hover:bg-red-900 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5   focus:outline-none ">
                         Add Student
                         </a>
                     </div>
 
                     
 
-                    <div class="relative overflow-x-auto shadow-md shadow-green-200 rounded-lg">
+                    <div class="relative overflow-x-auto shadow-md shadow-red-200 rounded-lg">
 
                         <table class="w-full text-sm text-left rtl:text-right text-gray-500">
                             <caption class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white ">
